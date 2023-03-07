@@ -1,7 +1,15 @@
 #include "Pessoa.h"
 
-int calc_idade(struct Pessoa p, int anoAtual){
-    int idade = anoAtual - p.ano;
-    p.idade = idade;
-    return idade;
+// passagem por referencia ->
+void calc_idade(struct Pessoa *p, int dia, int mes, int ano){
+    p->idade = ano - p->ano;
+    
+    if(p->mes > mes)
+        p->idade--;
+    else{
+        if(p->mes == mes){
+            if(p->dia > dia)
+                p->idade--;
+        }
+    }
 }

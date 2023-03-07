@@ -5,4 +5,4 @@ struct Pessoa{
     int idade;
 };
 
-int calc_idade(struct Pessoa p, int anoAtual);
+void calc_idade(struct Pessoa *p, int dia, int mes, int ano);
