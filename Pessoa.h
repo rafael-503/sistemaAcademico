@@ -1,8 +1,12 @@
-struct Pessoa{
-    int dia;
-    int mes;
-    int ano;
-    int idade;
-};
+class Pessoa{
+    private:
+        int diaP;
+        int mesP;
+        int anoP;
+        int idadeP;
 
-void calc_idade(struct Pessoa *p, int dia, int mes, int ano);
+    public:
+        Pessoa(int diaNA, int mesNA, int anoNA);
+        void calc_idade(int diaAT, int mesAT, int anoAT);
+        int getIdade();
+};

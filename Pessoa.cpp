@@ -1,15 +1,25 @@
 #include "Pessoa.h"
 
-// passagem por referencia ->
-void calc_idade(struct Pessoa *p, int dia, int mes, int ano){
-    p->idade = ano - p->ano;
+Pessoa::Pessoa(int diaNA, int mesNA, int anoNA){
+    diaP = diaNA;
+    mesP = mesNA;
+    anoP = anoNA;
+    idadeP = -1;
+    }
+
+void Pessoa::calc_idade(int diaAT, int mesAT, int anoAT){
+    idadeP = anoAT - anoP;
     
-    if(p->mes > mes)
-        p->idade--;
+    if(mesP < mesAT)
+        idadeP--;
     else{
-        if(p->mes == mes){
-            if(p->dia > dia)
-                p->idade--;
+        if(mesP == mesAT){
+            if(diaP > diaAT)
+                idadeP--;
         }
     }
+}
+
+int Pessoa::getIdade(){
+    return idadeP;
 }
