@@ -13,11 +13,11 @@ Pessoa::Pessoa(int diaNA, int mesNA, int anoNA, const char* nome){
 void Pessoa::calc_idade(int diaAT, int mesAT, int anoAT){
     idadeP = anoAT - anoP;
     
-    if(mesP < mesAT)
+    if(mesP > mesAT)
         idadeP--;
     else{
         if(mesP == mesAT){
-            if(diaP < diaAT)
+            if(diaP > diaAT)
                 idadeP--;
         }
     }
