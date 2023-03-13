@@ -2,7 +2,15 @@
 #include <iostream>
 #include <string.h>
 
+Pessoa::Pessoa(){
+    inicializa(0, 0, 0);
+}
+
 Pessoa::Pessoa(int diaNA, int mesNA, int anoNA, const char* nome){
+    inicializa(diaNA, mesNA, anoNA, nome);
+}
+
+void Pessoa::inicializa(int diaNA, int mesNA, int anoNA, const char* nome){
     diaP = diaNA;
     mesP = mesNA;
     anoP = anoNA;
