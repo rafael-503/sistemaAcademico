@@ -1,6 +1,6 @@
 #include "Pessoa.h"
 #include <iostream>
-#include <string.h>
+#include <cstring>
 
 Pessoa::Pessoa(){
     inicializa(0, 0, 0);
@@ -15,7 +15,7 @@ void Pessoa::inicializa(int diaNA, int mesNA, int anoNA, const char* nome){
     mesP = mesNA;
     anoP = anoNA;
     idadeP = -1;
-    strcpy(nomeP, nome);
+    std::strcpy(nomeP, nome);
 }
 
 void Pessoa::calc_idade(int diaAT, int mesAT, int anoAT){
