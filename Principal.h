@@ -11,5 +11,6 @@ class Principal{
 
     public:
         Principal();
+        ~Principal();
         void executar();
 };

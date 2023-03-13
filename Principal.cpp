@@ -1,7 +1,10 @@
 #include "Principal.h"
 #include <ctime>
 
-Principal::Principal(){
+Principal::Principal() : 
+Einsten(),
+Newton()
+{
     Einsten.inicializa(14, 3, 1879, "Albert Einstein");
     Newton.inicializa(4, 1, 1643, "Isaac Newton");
 
@@ -13,6 +16,8 @@ Principal::Principal(){
 
     executar();
 }
+
+Principal::~Principal(){}
 
 void Principal::executar(){
     Einsten.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
