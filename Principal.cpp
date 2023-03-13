@@ -15,6 +15,6 @@ Principal::Principal(){
 }
 
 void Principal::executar(){
-    Einsten.calc_idade_imprime(12, 3, 2023);
-    Newton.calc_idade_imprime(12, 3, 2023);
+    Einsten.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
+    Newton.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
 }
