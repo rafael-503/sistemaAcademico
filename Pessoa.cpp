@@ -8,6 +8,7 @@ Pessoa::Pessoa(int diaNA, int mesNA, int anoNA, const char* nome){
     anoP = anoNA;
     idadeP = -1;
     strcpy(nomeP, nome);
+    calc_idade(12, 3, 2023);
 }
 
 void Pessoa::calc_idade(int diaAT, int mesAT, int anoAT){
