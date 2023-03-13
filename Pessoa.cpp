@@ -8,7 +8,6 @@ Pessoa::Pessoa(int diaNA, int mesNA, int anoNA, const char* nome){
     anoP = anoNA;
     idadeP = -1;
     strcpy(nomeP, nome);
-    calc_idade(12, 3, 2023);
 }
 
 void Pessoa::calc_idade(int diaAT, int mesAT, int anoAT){
@@ -18,11 +17,19 @@ void Pessoa::calc_idade(int diaAT, int mesAT, int anoAT){
         idadeP--;
     else{
         if(mesP == mesAT){
-            if(diaP > diaAT)
+            if(diaP < diaAT)
                 idadeP--;
         }
     }
+}
+
+void Pessoa::imprime_idade(){
     std::cout << nomeP << " atualmente tem " << idadeP << " anos" << std::endl;
+}
+
+void Pessoa::calc_idade_imprime(int diaAT, int mesAT, int anoAT){
+    calc_idade(diaAT, mesAT, anoAT);
+    imprime_idade();
 }
 
 int Pessoa::getIdade(){
