@@ -1,3 +1,5 @@
+#include "Universidade.h"
+
 class Pessoa{
     private:
         int diaP;
@@ -5,6 +7,7 @@ class Pessoa{
         int anoP;
         int idadeP;
         char nomeP[50];
+        Universidade* pUnivFiliado;
 
     public:
         Pessoa(int diaNA, int mesNA, int anoNA, const char* nome="");
@@ -15,4 +18,7 @@ class Pessoa{
         void imprime_idade();
         void calc_idade_imprime(int diaAT, int mesAT, int anoAT);
         int getIdade();
+
+        void setUnivFiliado(Universidade* pUniv);
+        void ondeTrabalho();
 };

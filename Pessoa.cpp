@@ -43,3 +43,12 @@ void Pessoa::calc_idade_imprime(int diaAT, int mesAT, int anoAT){
 int Pessoa::getIdade(){
     return idadeP;
 }
+
+void Pessoa::setUnivFiliado(Universidade* pUniv){
+    pUnivFiliado = pUniv;
+}
+
+void Pessoa::ondeTrabalho(){
+    if(pUnivFiliado)
+        std::cout << nomeP << " trabalha para a " << pUnivFiliado->getNome() << std::endl;
+}

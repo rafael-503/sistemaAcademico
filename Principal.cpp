@@ -8,6 +8,9 @@ Newton()
     Einsten.inicializa(14, 3, 1879, "Albert Einstein");
     Newton.inicializa(4, 1, 1643, "Isaac Newton");
 
+    UTFPR.setNome("UTFPR");
+    Einsten.setUnivFiliado(&UTFPR);
+
     time_t now = time(nullptr);
     tm *local = localtime(&now);
     diaAtual = local->tm_mday;
@@ -22,4 +25,5 @@ Principal::~Principal(){}
 void Principal::executar(){
     Einsten.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
     Newton.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
+    Einsten.ondeTrabalho();
 }
