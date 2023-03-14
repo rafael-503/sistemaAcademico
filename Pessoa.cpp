@@ -6,6 +6,8 @@ Pessoa::Pessoa(){
     inicializa(0, 0, 0);
 }
 
+Pessoa::~Pessoa(){}
+
 Pessoa::Pessoa(int diaNA, int mesNA, int anoNA, const char* nome){
     inicializa(diaNA, mesNA, anoNA, nome);
 }
@@ -48,7 +50,16 @@ void Pessoa::setUnivFiliado(Universidade* pUniv){
     pUnivFiliado = pUniv;
 }
 
+void Pessoa::setDptoFiliado(Departamento* pdep){
+    pDptoFiliado = pdep;
+}
+
 void Pessoa::ondeTrabalho(){
     if(pUnivFiliado)
         std::cout << nomeP << " trabalha para a " << pUnivFiliado->getNome() << std::endl;
+}
+
+void Pessoa::qualDepartamentoTrabalho(){
+    if(pDptoFiliado)
+        std::cout << nomeP << " trabalha para a " << pUnivFiliado->getNome() << " no departamento de "<< pDptoFiliado->getNome() << std::endl;
 }
