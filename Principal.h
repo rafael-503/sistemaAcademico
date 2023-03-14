@@ -12,6 +12,7 @@ class Principal{
         Universidade Princeton;
         Universidade Cambdrige;
 
+        Departamento DAINF;
         Departamento FisicaPrinceton;
         Departamento MatematicaCambdrige;
 

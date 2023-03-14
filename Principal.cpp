@@ -1,4 +1,5 @@
 #include "Principal.h"
+#include "Universidade.h"
 #include <ctime>
 
 Principal::Principal() : 
@@ -9,14 +10,21 @@ Newton()
     Newton.inicializa(4, 1, 1643, "Isaac Newton");
 
     Princeton.setNome("Princeton University");
-    Einsten.setUnivFiliado(&Princeton);
     FisicaPrinceton.setNome("Fisica");
+    Princeton.setDepartamento(&FisicaPrinceton, 0);
+    Einsten.setUnivFiliado(&Princeton);
     Einsten.setDptoFiliado(&FisicaPrinceton);
 
     Cambdrige.setNome("Cambdrige University");
-    Newton.setUnivFiliado(&Cambdrige);
     MatematicaCambdrige.setNome("Matematica");
+    Cambdrige.setDepartamento(&MatematicaCambdrige, 0);
+    Newton.setUnivFiliado(&Cambdrige);
     Newton.setDptoFiliado(&MatematicaCambdrige);
+
+    UTFPR.setNome("UTFPR");
+    DAINF.setNome("DAINF");
+    UTFPR.setDepartamento(&DAINF, 0);
+    //DAINF.setUniversidade(&UTFPR);
 
     time_t now = time(nullptr);
     tm *local = localtime(&now);
@@ -37,4 +45,7 @@ void Principal::executar(){
     Newton.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
     Newton.ondeTrabalho();
     Newton.qualDepartamentoTrabalho();
+    UTFPR.imprimeDepartamentos();
+    Cambdrige.imprimeDepartamentos();
+    Princeton.imprimeDepartamentos();
 }
