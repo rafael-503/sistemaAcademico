@@ -46,20 +46,18 @@ int Pessoa::getIdade(){
     return idadeP;
 }
 
-void Pessoa::setUnivFiliado(Universidade* pUniv){
-    pUnivFiliado = pUniv;
+void Pessoa::setID(int i){
+    id = i;
 }
 
-void Pessoa::setDptoFiliado(Departamento* pdep){
-    pDptoFiliado = pdep;
+int Pessoa::getID(){
+    return id;
 }
 
-void Pessoa::ondeTrabalho(){
-    if(pUnivFiliado)
-        std::cout << nomeP << " trabalha para a " << pUnivFiliado->getNome() << std::endl;
+void Pessoa::setNome(const char* n){
+    std::strcpy(nomeP, n);
 }
 
-void Pessoa::qualDepartamentoTrabalho(){
-    if(pDptoFiliado)
-        std::cout << nomeP << " trabalha para a " << pUnivFiliado->getNome() << " no departamento de "<< pDptoFiliado->getNome() << std::endl;
+char* Pessoa::getNome(){
+    return nomeP;
 }

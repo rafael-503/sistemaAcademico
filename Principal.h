@@ -1,12 +1,12 @@
 #pragma once
-#include "Pessoa.h"
+#include "Professor.h"
 #include "Universidade.h"
 #include "Departamento.h"
 
 class Principal{
     private:
-        Pessoa Einsten;
-        Pessoa Newton;
+        Professor Einsten;
+        Professor Newton;
 
         Universidade UTFPR;
         Universidade Princeton;

@@ -1,14 +1,14 @@
+#pragma once
 #include "Universidade.h"
 
 class Pessoa{
-    private:
+    protected:
         int diaP;
         int mesP;
         int anoP;
         int idadeP;
         char nomeP[50];
-        Universidade* pUnivFiliado;
-        Departamento* pDptoFiliado;
+        int id;
 
     public:
         Pessoa(int diaNA, int mesNA, int anoNA, const char* nome="");
@@ -20,9 +20,8 @@ class Pessoa{
         void imprime_idade();
         void calc_idade_imprime(int diaAT, int mesAT, int anoAT);
         int getIdade();
-
-        void setUnivFiliado(Universidade* pUniv);
-        void setDptoFiliado(Departamento* pdep);
-        void ondeTrabalho();
-        void qualDepartamentoTrabalho();
+        void setID(int i);
+        int getID();
+        void setNome(const char* n);
+        char* getNome();
 };
