@@ -11,19 +11,19 @@ Newton()
 
     Princeton.setNome("Princeton University");
     FisicaPrinceton.setNome("Fisica");
-    Princeton.setDepartamento(&FisicaPrinceton, 0);
+    Princeton.setDepartamento(&FisicaPrinceton);
     Einsten.setUnivFiliado(&Princeton);
     Einsten.setDptoFiliado(&FisicaPrinceton);
 
     Cambdrige.setNome("Cambdrige University");
     MatematicaCambdrige.setNome("Matematica");
-    Cambdrige.setDepartamento(&MatematicaCambdrige, 0);
+    Cambdrige.setDepartamento(&MatematicaCambdrige);
     Newton.setUnivFiliado(&Cambdrige);
     Newton.setDptoFiliado(&MatematicaCambdrige);
 
     UTFPR.setNome("UTFPR");
     DAINF.setNome("DAINF");
-    UTFPR.setDepartamento(&DAINF, 0);
+    UTFPR.setDepartamento(&DAINF);
     //DAINF.setUniversidade(&UTFPR);
 
     time_t now = time(nullptr);
