@@ -1795,6 +1795,42 @@
 									"subViews": [
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/Iz6+isYjtM=",
+											"_parent": {
+												"$ref": "AAAAAAGG4FS3bYoLGso="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/Iz63ysPiqY="
+											},
+											"fillColor": "#ddc98b",
+											"font": "Arial;13;0",
+											"left": 1285,
+											"top": 821,
+											"width": 175.21435546875,
+											"height": 13,
+											"text": "«create»+Departamento()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/I0AKSuK45Y=",
+											"_parent": {
+												"$ref": "AAAAAAGG4FS3bYoLGso="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/I0ADyuBmrs="
+											},
+											"fillColor": "#ddc98b",
+											"font": "Arial;13;0",
+											"left": 1285,
+											"top": 836,
+											"width": 175.21435546875,
+											"height": 13,
+											"text": "«destroy»+Departamento()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAGG96tgamDFti8=",
 											"_parent": {
 												"$ref": "AAAAAAGG4FS3bYoLGso="
@@ -1805,7 +1841,7 @@
 											"fillColor": "#ddc98b",
 											"font": "Arial;13;0",
 											"left": 1285,
-											"top": 821,
+											"top": 851,
 											"width": 175.21435546875,
 											"height": 13,
 											"text": "+setNome(const char* n): void",
@@ -1823,7 +1859,7 @@
 											"fillColor": "#ddc98b",
 											"font": "Arial;13;0",
 											"left": 1285,
-											"top": 836,
+											"top": 866,
 											"width": 175.21435546875,
 											"height": 13,
 											"text": "+getNome(): char*",
@@ -1835,7 +1871,7 @@
 									"left": 1280,
 									"top": 816,
 									"width": 185.21435546875,
-									"height": 38
+									"height": 68
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1878,7 +1914,7 @@
 							"left": 1280,
 							"top": 768,
 							"width": 185.21435546875,
-							"height": 86,
+							"height": 116,
 							"nameCompartment": {
 								"$ref": "AAAAAAGG4FS3bIoFpB0="
 							},
@@ -3268,7 +3304,7 @@
 							"tail": {
 								"$ref": "AAAAAAGG97ttFlOix7k="
 							},
-							"points": "344:808;272:808;272:738"
+							"points": "344:784;272:784;272:738"
 						}
 					]
 				},
@@ -3897,6 +3933,24 @@
 					"operations": [
 						{
 							"_type": "UMLOperation",
+							"_id": "AAAAAAGG/Iz63ysPiqY=",
+							"_parent": {
+								"$ref": "AAAAAAGG4FS3a4oCQG8="
+							},
+							"name": "Departamento",
+							"stereotype": "create"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGG/I0ADyuBmrs=",
+							"_parent": {
+								"$ref": "AAAAAAGG4FS3a4oCQG8="
+							},
+							"name": "Departamento",
+							"stereotype": "destroy"
+						},
+						{
+							"_type": "UMLOperation",
 							"_id": "AAAAAAGG96tgV2C5OTM=",
 							"_parent": {
 								"$ref": "AAAAAAGG4FS3a4oCQG8="
@@ -4247,7 +4301,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGG97yf1HCgLpw="
 									},
-									"name": "int ra"
+									"name": "int ra",
+									"type": ""
 								}
 							]
 						},
