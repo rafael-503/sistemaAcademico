@@ -2324,7 +2324,7 @@
 											"top": 774,
 											"width": 429.55224609375,
 											"height": 13,
-											"text": "+pUnivFiliado: Universidade*",
+											"text": "-pUnivFiliado: Universidade*",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2342,7 +2342,7 @@
 											"top": 789,
 											"width": 429.55224609375,
 											"height": 13,
-											"text": "+pDptoFiliado: Departamento*",
+											"text": "-pDptoFiliado: Departamento*",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4058,6 +4058,7 @@
 								"$ref": "AAAAAAGG95z65BYoPfk="
 							},
 							"name": "pUnivFiliado",
+							"visibility": "private",
 							"type": "Universidade*"
 						},
 						{
@@ -4067,6 +4068,7 @@
 								"$ref": "AAAAAAGG95z65BYoPfk="
 							},
 							"name": "pDptoFiliado",
+							"visibility": "private",
 							"type": "Departamento*"
 						}
 					],

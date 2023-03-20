@@ -61,14 +61,17 @@ void Principal::inicializaDisciplinas(){
     Computacao2.setDepartamento(&DAINF);
     Algoritmos.setDepartamento(&DAINF);
     TecProg.setDepartamento(&DAINF);
+    
+    DAINF.incluiDisciplina(&TecProg);
 
-    //TecProg.incluiAluno(&AAA);
+    TecProg.incluiAluno(&AAA);
     //TecProg.incluiAluno(&BBB);
     //TecProg.incluiAluno(&CCC);
     //Algoritmos.incluiAluno(&DDD);
 }
 
 void Principal::inicializaAlunos(){
+    AAA.setNome("AA");
 }
 
 void Principal::calcIdadeProf(){
@@ -97,16 +100,16 @@ void Principal::ListaDiscDeptos(){
 
 void Principal::ListaAlunosDisc(){
     TecProg.listaAlunos();
-    TecProg.listaAlunos2();
+    //TecProg.listaAlunos2();
 
-    Algoritmos.listaAlunos();
-    Algoritmos.listaAlunos2();
+    //Algoritmos.listaAlunos();
+    //Algoritmos.listaAlunos2();
 }
 
 void Principal::executar(){
-    calcIdadeProf();
+    //calcIdadeProf();
     univOndeProfsTrabalham();
-    dptoOndeProfsTrabalham();
-    ListaDiscDeptos();
-    //ListaAlunosDisc();
+    //dptoOndeProfsTrabalham();
+    //ListaDiscDeptos();
+    ListaAlunosDisc();
 }
