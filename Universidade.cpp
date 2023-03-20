@@ -5,7 +5,7 @@
 Universidade::Universidade(const char* n){
     int i;
     for(i=0; i<50; i++)
-        pDpto[i] = nullptr;
+        LpDptos[i] = nullptr;
 }
 
 Universidade::~Universidade(){}
@@ -18,13 +18,15 @@ char* Universidade::getNome(){
     return nome;
 }
 
-void Universidade::setDepartamento(Departamento* pdep, int i){
-    pDpto[i] = pdep;
+void Universidade::setDepartamento(Departamento* pdep){
+    if(pdep != nullptr)
+        LpDptos.push_back(pdep);
 }
 
 void Universidade::imprimeDepartamentos(){
-    for(int i=0; i<50; i++){
-        if(pDpto[i])
-            std::cout << pDpto[i]->getNome() << std::endl;
+    int size = LpDptos.size();
+    for(int i=0; i<size; i++){
+        if(LpDptos[i] != nullptr)
+            std::cout << LpDptos[i]->getNome() << std::endl;
     }
 }
