@@ -1,15 +1,15 @@
 #pragma once
 #include "Departamento.h"
-#include <vector>
+#include <list>
 
 class Universidade{
     private:
         char nome[50];
-        std::vector <Departamento*> LpDptos;
+        std::list <Departamento*> LpDptos;
         int i;
     
     public:
-        Universidade(const char* n="");
+        Universidade();
         ~Universidade();
 
         void setNome(const char* n);
