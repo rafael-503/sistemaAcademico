@@ -62,10 +62,10 @@ void Principal::inicializaDisciplinas(){
     Algoritmos.setDepartamento(&DAINF);
     TecProg.setDepartamento(&DAINF);
 
-    TecProg.incluiAluno(&AAA);
-    TecProg.incluiAluno(&BBB);
-    TecProg.incluiAluno(&CCC);
-    Algoritmos.incluiAluno(&DDD);
+    //TecProg.incluiAluno(&AAA);
+    //TecProg.incluiAluno(&BBB);
+    //TecProg.incluiAluno(&CCC);
+    //Algoritmos.incluiAluno(&DDD);
 }
 
 void Principal::inicializaAlunos(){
@@ -108,5 +108,5 @@ void Principal::executar(){
     univOndeProfsTrabalham();
     dptoOndeProfsTrabalham();
     ListaDiscDeptos();
-    ListaAlunosDisc();
+    //ListaAlunosDisc();
 }

@@ -8,6 +8,8 @@ Disciplina::Disciplina(int na, const char* ac){
     pDptoAssociado = nullptr;
     pProx = nullptr;
     pAnt = nullptr;
+    pAlunoPrim = nullptr;
+    pAlunoAtual = nullptr;
     cont_alunos = 0;
     numero_alunos = na;
     std::strcpy(area_conhecimento, ac);
