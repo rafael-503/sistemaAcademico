@@ -10,6 +10,9 @@ class Aluno: public Pessoa{
         Aluno();
         ~Aluno();
 
+        Aluno* pProx;
+        Aluno* pAnt;
+
         void setRA(int ra);
         int getRA();
 };

@@ -2,50 +2,111 @@
 #include "Universidade.h"
 #include <ctime>
 
-Principal::Principal() : 
-Einsten(),
-Newton()
-{
-    Einsten.inicializa(14, 3, 1879, "Albert Einstein");
-    Newton.inicializa(4, 1, 1643, "Isaac Newton");
-
-    Princeton.setNome("Princeton University");
-    FisicaPrinceton.setNome("Fisica");
-    Princeton.setDepartamento(&FisicaPrinceton);
-    Einsten.setUnivFiliado(&Princeton);
-    Einsten.setDptoFiliado(&FisicaPrinceton);
-
-    Cambdrige.setNome("Cambdrige University");
-    MatematicaCambdrige.setNome("Matematica");
-    Cambdrige.setDepartamento(&MatematicaCambdrige);
-    Newton.setUnivFiliado(&Cambdrige);
-    Newton.setDptoFiliado(&MatematicaCambdrige);
-
-    UTFPR.setNome("UTFPR");
-    DAINF.setNome("DAINF");
-    UTFPR.setDepartamento(&DAINF);
-    //DAINF.setUniversidade(&UTFPR);
-
+Principal::Principal(): Einsten(), Newton(), Simao(){
+    // leitura da data atual
     time_t now = time(nullptr);
     tm *local = localtime(&now);
     diaAtual = local->tm_mday;
     mesAtual = local->tm_mon + 1;
     anoAtual = local->tm_year + 1900;
 
-    executar();
+    inicializa();
 }
 
 Principal::~Principal(){}
 
-void Principal::executar(){
-    Einsten.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
-    Einsten.ondeTrabalho();
-    Einsten.qualDepartamentoTrabalho();
+void Principal::inicializa(){
+    inicializaUniversidades();
+    inicializaDepartamentos();
+    inicializaProfessores();
+    inicializaDisciplinas();
+}
 
+void Principal::inicializaUniversidades(){
+    UTFPR.setNome("UTFPR");
+    Princeton.setNome("Princeton University");
+    Cambdrige.setNome("Cambdrige University");
+}
+
+void Principal::inicializaDepartamentos(){
+    DAINF.setNome("DAINF");
+    FisicaPrinceton.setNome("Fisica Princeton");
+    MatematicaCambdrige.setNome("Matematica Cambdrige");
+}
+
+void Principal::inicializaProfessores(){
+    // inicializacao dos professores
+    Einsten.inicializa(14, 3, 1879, "Albert Einstein");
+    Newton.inicializa(4, 1, 1643, "Isaac Newton");
+    Simao.inicializa(3, 10, 1976, "Jean Simao");
+
+    // associacao dos professores com as universidades
+    Einsten.setUnivFiliado(&Princeton);
+    Newton.setUnivFiliado(&Cambdrige);
+    Simao.setUnivFiliado(&UTFPR);
+
+    // associacao dos professores com os departamentos
+    Einsten.setDptoFiliado(&FisicaPrinceton);
+    Newton.setDptoFiliado(&MatematicaCambdrige);
+    Simao.setDptoFiliado(&DAINF);
+}
+
+void Principal::inicializaDisciplinas(){
+    Computacao1.setNome("Computacao 1");
+    Computacao2.setNome("Computacao 2");
+    Algoritmos.setNome("Algoritmos");
+    TecProg.setNome("Tecnicas de Programacao");
+
+    Computacao1.setDepartamento(&DAINF);
+    Computacao2.setDepartamento(&DAINF);
+    Algoritmos.setDepartamento(&DAINF);
+    TecProg.setDepartamento(&DAINF);
+
+    TecProg.incluiAluno(&AAA);
+    TecProg.incluiAluno(&BBB);
+    TecProg.incluiAluno(&CCC);
+    Algoritmos.incluiAluno(&DDD);
+}
+
+void Principal::inicializaAlunos(){
+}
+
+void Principal::calcIdadeProf(){
+    Einsten.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
     Newton.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
+    Simao.calc_idade_imprime(diaAtual, mesAtual, anoAtual);
+}
+
+void Principal::univOndeProfsTrabalham(){
+    Einsten.ondeTrabalho();
     Newton.ondeTrabalho();
+    Simao.ondeTrabalho();
+}
+
+void Principal::dptoOndeProfsTrabalham(){
+    Einsten.qualDepartamentoTrabalho();
     Newton.qualDepartamentoTrabalho();
-    UTFPR.imprimeDepartamentos();
-    Cambdrige.imprimeDepartamentos();
-    Princeton.imprimeDepartamentos();
+    Simao.qualDepartamentoTrabalho();
+}
+
+void Principal::ListaDiscDeptos(){
+    DAINF.listaDisciplinas();
+    FisicaPrinceton.listaDisciplinas();
+    MatematicaCambdrige.listaDisciplinas();
+}
+
+void Principal::ListaAlunosDisc(){
+    TecProg.listaAlunos();
+    TecProg.listaAlunos2();
+
+    Algoritmos.listaAlunos();
+    Algoritmos.listaAlunos2();
+}
+
+void Principal::executar(){
+    calcIdadeProf();
+    univOndeProfsTrabalham();
+    dptoOndeProfsTrabalham();
+    ListaDiscDeptos();
+    ListaAlunosDisc();
 }
