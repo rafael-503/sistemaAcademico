@@ -20,6 +20,7 @@ void Principal::inicializa(){
     inicializaDepartamentos();
     inicializaProfessores();
     inicializaDisciplinas();
+    inicializaAlunos();
 }
 
 void Principal::inicializaUniversidades(){
@@ -66,12 +67,21 @@ void Principal::inicializaDisciplinas(){
 
     TecProg.incluiAluno(&AAA);
     //TecProg.incluiAluno(&BBB);
-    //TecProg.incluiAluno(&CCC);
+    TecProg.incluiAluno(&CCC);
     //Algoritmos.incluiAluno(&DDD);
+    Algoritmos.incluiAluno(&AAA);
+    Algoritmos.incluiAluno(&BBB);
 }
 
 void Principal::inicializaAlunos(){
     AAA.setNome("AA");
+    AAA.setRA(1);
+    BBB.setNome("BB");
+    BBB.setRA(2);
+    CCC.setNome("CC");
+    CCC.setRA(3);
+    DDD.setNome("DD");
+    DDD.setRA(4);
 }
 
 void Principal::calcIdadeProf(){
@@ -100,15 +110,15 @@ void Principal::ListaDiscDeptos(){
 
 void Principal::ListaAlunosDisc(){
     TecProg.listaAlunos();
-    //TecProg.listaAlunos2();
+    //TecProg.listaAlunos2(); lista inversa
 
     //Algoritmos.listaAlunos();
-    //Algoritmos.listaAlunos2();
+    //Algoritmos.listaAlunos2(); lista inversa
 }
 
 void Principal::executar(){
     //calcIdadeProf();
-    univOndeProfsTrabalham();
+    //univOndeProfsTrabalham();
     //dptoOndeProfsTrabalham();
     //ListaDiscDeptos();
     ListaAlunosDisc();

@@ -69,7 +69,7 @@ void Disciplina::listaAlunos(){
     Aluno* pAux = pAlunoPrim;
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " pertence a disciplina " << getNome() << std::endl;
-        pAux = pAux->pProx;
+        pAux = pAux->pAnt;
     }
 }
 
