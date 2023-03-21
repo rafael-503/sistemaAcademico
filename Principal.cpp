@@ -64,11 +64,12 @@ void Principal::inicializaDisciplinas(){
     TecProg.setDepartamento(&DAINF);
     
     DAINF.incluiDisciplina(&TecProg);
+    DAINF.incluiDisciplina(&Algoritmos);
 
     TecProg.incluiAluno(&AAA);
-    //TecProg.incluiAluno(&BBB);
+    TecProg.incluiAluno(&BBB);
     TecProg.incluiAluno(&CCC);
-    //Algoritmos.incluiAluno(&DDD);
+    Algoritmos.incluiAluno(&DDD);
     Algoritmos.incluiAluno(&AAA);
     Algoritmos.incluiAluno(&BBB);
 }
@@ -112,7 +113,7 @@ void Principal::ListaAlunosDisc(){
     TecProg.listaAlunos();
     //TecProg.listaAlunos2(); lista inversa
 
-    //Algoritmos.listaAlunos();
+    Algoritmos.listaAlunos();
     //Algoritmos.listaAlunos2(); lista inversa
 }
 

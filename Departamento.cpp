@@ -31,16 +31,14 @@ Universidade* Departamento::getUniversidade(){
 }
 
 void Departamento::incluiDisciplina(Disciplina* pd){
-    if(pd != nullptr){
-        if(pDisciplPrim == nullptr){
-            pDisciplPrim = pd;
-            pDisciplAtual = pd;
-        }
-        else{
-            pDisciplAtual->pProx = pd;
-            pd->pAnt = pDisciplAtual;
-            pDisciplAtual = pd;
-        }
+    if(pDisciplPrim == nullptr){
+         pDisciplPrim = pd;
+         pDisciplAtual = pd;
+    }
+     else{
+        pDisciplAtual->pProx = pd;
+        pd->pAnt = pDisciplAtual;
+        pDisciplAtual = pd;
     }
 }
 

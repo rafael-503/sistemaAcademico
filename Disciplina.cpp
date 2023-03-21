@@ -69,13 +69,12 @@ void Disciplina::listaAlunos(){
     Aluno* pAux = pAlunoPrim;
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " pertence a disciplina " << getNome() << std::endl;
-        pAux = pAux->pAnt;
+        pAux = pAux->pProx;
     }
 }
 
 void Disciplina::listaAlunos2(){
     Aluno* pAux = pAlunoAtual;
-
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " pertence a disciplina " << getNome() << std::endl;
         pAux = pAux->pAnt;
