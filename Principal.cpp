@@ -65,10 +65,8 @@ void Principal::inicializaDisciplinas(){
 
     TecProg.incluiAluno(&AAA);
     TecProg.incluiAluno(&BBB);
-    TecProg.incluiAluno(&CCC);
+    Algoritmos.incluiAluno(&CCC);
     Algoritmos.incluiAluno(&DDD);
-    Algoritmos.incluiAluno(&AAA);
-    Algoritmos.incluiAluno(&BBB);
 }
 
 void Principal::inicializaAlunos(){
