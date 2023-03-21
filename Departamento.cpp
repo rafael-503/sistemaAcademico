@@ -51,7 +51,7 @@ void Departamento::listaDisciplinas(){
     }
 }
 
-void Departamento::listaDisciplinas2(){
+void Departamento::listaDisciplinasInv(){
     Disciplina* pAux = pDisciplAtual;
 
     while(pAux != nullptr){

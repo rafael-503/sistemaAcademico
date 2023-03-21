@@ -31,6 +31,7 @@ class Disciplina{
         Departamento* getDepartamento();
 
         void incluiAluno(Aluno* pa);
+        void excluiAluno(Aluno* pa);
         void listaAlunos();
         void listaAlunos2();
 };

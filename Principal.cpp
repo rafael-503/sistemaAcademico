@@ -67,6 +67,8 @@ void Principal::inicializaDisciplinas(){
     TecProg.incluiAluno(&BBB);
     Algoritmos.incluiAluno(&CCC);
     Algoritmos.incluiAluno(&DDD);
+    TecProg.excluiAluno(&BBB);
+    //TecProg.excluiAluno(&AAA);
 }
 
 void Principal::inicializaAlunos(){
@@ -108,7 +110,7 @@ void Principal::ListaAlunosDisc(){
     TecProg.listaAlunos();
     //TecProg.listaAlunos2(); lista inversa
 
-    Algoritmos.listaAlunos();
+    //Algoritmos.listaAlunos();
     //Algoritmos.listaAlunos2(); lista inversa
 }
 

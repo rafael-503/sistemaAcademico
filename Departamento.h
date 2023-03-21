@@ -20,5 +20,5 @@ class Departamento{
 
         void incluiDisciplina(Disciplina* pd);
         void listaDisciplinas();
-        void listaDisciplinas2();
+        void listaDisciplinasInv();
 };

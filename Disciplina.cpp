@@ -65,6 +65,32 @@ void Disciplina::incluiAluno(Aluno* pa){
     }
 }
 
+void Disciplina::excluiAluno(Aluno* pa){
+    Aluno* pAux = pAlunoPrim;
+    while(pAux != nullptr){
+        if(pAux->getRA() == pa->getRA()){
+            if(pAlunoPrim == pAlunoAtual){
+                pAlunoPrim = nullptr;
+                pAlunoAtual = nullptr;
+            }
+            else if(pAux == pAlunoPrim){
+                pAlunoPrim = pAlunoPrim->pProx;
+                pAlunoPrim->pAnt = nullptr;
+            }
+            else if(pAux == pAlunoAtual){
+                pAlunoAtual = pAlunoAtual->pAnt;
+                pAlunoAtual->pProx = nullptr;
+            }
+            else{
+                pAux->pAnt->pProx = pAux->pProx;
+                pAux->pProx->pAnt = pAux->pAnt;
+            }
+            cont_alunos--;
+            break;
+        }
+    }
+}
+
 void Disciplina::listaAlunos(){
     Aluno* pAux = pAlunoPrim;
     while(pAux != nullptr){
