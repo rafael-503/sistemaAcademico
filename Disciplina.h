@@ -33,5 +33,5 @@ class Disciplina{
         void incluiAluno(Aluno* pa);
         void excluiAluno(Aluno* pa);
         void listaAlunos();
-        void listaAlunos2();
+        void listaAlunosInv();
 };

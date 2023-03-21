@@ -99,7 +99,7 @@ void Disciplina::listaAlunos(){
     }
 }
 
-void Disciplina::listaAlunos2(){
+void Disciplina::listaAlunosInv(){
     Aluno* pAux = pAlunoAtual;
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " pertence a disciplina " << getNome() << std::endl;

@@ -108,10 +108,10 @@ void Principal::listaDiscDeptos(){
 
 void Principal::listaAlunosDisc(){
     TecProg.listaAlunos();
-    //TecProg.listaAlunos2(); lista inversa
+    //TecProg.listaAlunosInv(); lista inversa
 
     //Algoritmos.listaAlunos();
-    //Algoritmos.listaAlunos2(); lista inversa
+    //Algoritmos.listaAlunosInv(); lista inversa
 }
 
 void Principal::executar(){
