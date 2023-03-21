@@ -62,9 +62,6 @@ void Principal::inicializaDisciplinas(){
     Computacao2.setDepartamento(&DAINF);
     Algoritmos.setDepartamento(&DAINF);
     TecProg.setDepartamento(&DAINF);
-    
-    DAINF.incluiDisciplina(&TecProg);
-    DAINF.incluiDisciplina(&Algoritmos);
 
     TecProg.incluiAluno(&AAA);
     TecProg.incluiAluno(&BBB);
