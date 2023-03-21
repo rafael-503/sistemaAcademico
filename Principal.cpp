@@ -100,13 +100,13 @@ void Principal::dptoOndeProfsTrabalham(){
     Simao.qualDepartamentoTrabalho();
 }
 
-void Principal::ListaDiscDeptos(){
+void Principal::listaDiscDeptos(){
     DAINF.listaDisciplinas();
     FisicaPrinceton.listaDisciplinas();
     MatematicaCambdrige.listaDisciplinas();
 }
 
-void Principal::ListaAlunosDisc(){
+void Principal::listaAlunosDisc(){
     TecProg.listaAlunos();
     //TecProg.listaAlunos2(); lista inversa
 
@@ -118,6 +118,6 @@ void Principal::executar(){
     //calcIdadeProf();
     //univOndeProfsTrabalham();
     //dptoOndeProfsTrabalham();
-    //ListaDiscDeptos();
-    ListaAlunosDisc();
+    //listaDiscDeptos();
+    listaAlunosDisc();
 }

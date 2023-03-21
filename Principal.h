@@ -47,7 +47,7 @@ class Principal{
         void calcIdadeProf();
         void univOndeProfsTrabalham();
         void dptoOndeProfsTrabalham();
-        void ListaDiscDeptos();
-        void ListaAlunosDisc();
+        void listaDiscDeptos();
+        void listaAlunosDisc();
         void executar();
 };
