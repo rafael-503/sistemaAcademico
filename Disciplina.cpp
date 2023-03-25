@@ -8,8 +8,8 @@ Disciplina::Disciplina(int na, const char* ac){
     pDptoAssociado = nullptr;
     pProx = nullptr;
     pAnt = nullptr;
-    pAlunoPrim = nullptr;
-    pAlunoAtual = nullptr;
+    pElAlunoPrim = nullptr;
+    pElAlunoAtual = nullptr;
     cont_alunos = 0;
     numero_alunos = na;
     std::strcpy(area_conhecimento, ac);
@@ -18,8 +18,8 @@ Disciplina::Disciplina(int na, const char* ac){
 Disciplina::~Disciplina(){
     id = -1;
     pDptoAssociado = nullptr;
-    pAlunoAtual = nullptr;
-    pAlunoPrim = nullptr;
+    pElAlunoAtual = nullptr;
+    pElAlunoPrim = nullptr;
     pProx = nullptr;
     pAnt = nullptr;
 }
@@ -51,14 +51,18 @@ Departamento* Disciplina::getDepartamento(){
 
 void Disciplina::incluiAluno(Aluno* pa){
     if((cont_alunos < numero_alunos) && (pa != nullptr)){
-        if(pAlunoPrim == nullptr){
-            pAlunoPrim = pa;
-            pAlunoAtual = pa;
+        ElAluno* pAux = nullptr;
+        pAux = new ElAluno();
+        pAux->setAluno(pa);
+
+        if(pElAlunoPrim == nullptr){
+            pElAlunoPrim = pAux;
+            pElAlunoAtual = pAux;
         }
         else{
-            pAlunoAtual->pProx = pa;
-            pa->pAnt = pAlunoAtual;
-            pAlunoAtual = pa;
+            pElAlunoAtual->pProx = pAux;
+            pAux->pAnt = pElAlunoAtual;
+            pElAlunoAtual = pAux;
         }
         cont_alunos++;
     }
@@ -68,14 +72,15 @@ void Disciplina::incluiAluno(Aluno* pa){
 }
 
 void Disciplina::excluiAluno(Aluno* pa) {
-    Aluno* pAux = pAlunoPrim;
+    ElAluno* pAux = pElAlunoPrim;
+
     while (pAux != nullptr) {
-        if (pAux == pa) {
-            if (pAux == pAlunoPrim) {
-                pAlunoPrim = pAux->pProx;
+        if (pAux->getAluno() == pa) {
+            if (pAux == pElAlunoPrim) {
+                pElAlunoPrim = pAux->pProx;
             }
-            if (pAux == pAlunoAtual) {
-                pAlunoAtual = pAux->pAnt;
+            if (pAux == pElAlunoAtual) {
+                pElAlunoAtual = pAux->pAnt;
             }
             if (pAux->pAnt != nullptr) {
                 pAux->pAnt->pProx = pAux->pProx;
@@ -91,7 +96,8 @@ void Disciplina::excluiAluno(Aluno* pa) {
 }
 
 void Disciplina::listaAlunos(){
-    Aluno* pAux = pAlunoPrim;
+    ElAluno* pAux = pElAlunoPrim;
+
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " pertence a disciplina " << getNome() << std::endl;
         pAux = pAux->pProx;
@@ -99,7 +105,8 @@ void Disciplina::listaAlunos(){
 }
 
 void Disciplina::listaAlunosInv(){
-    Aluno* pAux = pAlunoAtual;
+    ElAluno* pAux = pElAlunoAtual;
+
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " pertence a disciplina " << getNome() << std::endl;
         pAux = pAux->pAnt;
