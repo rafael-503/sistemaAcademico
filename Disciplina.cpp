@@ -16,7 +16,15 @@ Disciplina::Disciplina(int na, const char* ac){
 }
 
 Disciplina::~Disciplina(){
-    id = -1;
+    ElAluno* pAux;
+    pAux = pElAlunoPrim;
+    
+    while(pElAlunoPrim != nullptr){
+        pElAlunoPrim = pElAlunoPrim->pProx;
+        delete pAux;
+        pAux = pElAlunoPrim;
+    }
+
     pDptoAssociado = nullptr;
     pElAlunoAtual = nullptr;
     pElAlunoPrim = nullptr;
