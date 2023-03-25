@@ -18,6 +18,8 @@ Disciplina::Disciplina(int na, const char* ac){
 Disciplina::~Disciplina(){
     id = -1;
     pDptoAssociado = nullptr;
+    pAlunoAtual = nullptr;
+    pAlunoPrim = nullptr;
     pProx = nullptr;
     pAnt = nullptr;
 }
