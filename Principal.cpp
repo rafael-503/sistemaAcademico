@@ -1,6 +1,10 @@
 #include "Principal.h"
 #include "Universidade.h"
 #include <ctime>
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
 
 Principal::Principal(): Einsten(), Newton(), Simao(){
     // leitura da data atual
@@ -120,5 +124,102 @@ void Principal::executar(){
     //univOndeProfsTrabalham();
     //dptoOndeProfsTrabalham();
     //listaDiscDeptos();
-    listaAlunosDisc();
+    //listaAlunosDisc();
+    menu();
+}
+
+void Principal::cadDisciplina(){}
+
+void Principal::cadDepartamento(){
+    char nomeUniversidade[100];
+    char nomeDepartamento[100];
+}
+
+void Principal::cadUniversidade(){
+    char nomeUniversidade[100];
+    Universidade* pUniv = nullptr;
+
+    cout << "Informe o nome da universidade: ";
+    cin >> nomeUniversidade;
+
+    pUniv = new Universidade();
+    pUniv->setNome(nomeUniversidade);
+    LUniversidades.incluiUniversidade(pUniv);
+}
+
+void Principal::menu(){
+    int op= -1;
+
+    while (op!= 3){
+        system("clear");
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1 - Cadastrar" << endl;
+        cout << "2 - Executar" << endl;
+        cout << "3 - Sair" << endl;
+        cin >> op;
+
+        switch (op){
+        case 1:{menuCad();}
+            break;
+        case 2:{menuExe();}
+            break;
+        case 3: {cout << "Saindo..." << endl;}
+            break;
+        default:{cout << "Opção inválida!" << endl;
+                getchar();}
+        }
+    }
+    
+}
+
+void Principal::menuCad(){
+    int op= -1;
+
+    while (op!= 4){
+        system("clear");
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1 - Cadastrar Disciplina" << endl;
+        cout << "2 - Cadastrar Departamento" << endl;
+        cout << "3 - Cadastrar Universidade" << endl;
+        cout << "4 - Sair" << endl;
+        cin >> op;
+
+        switch (op){
+        case 1:{cadDisciplina();}
+            break;
+        case 2:{cadDepartamento();}
+            break;
+        case 3:{cadUniversidade();}
+            break;
+        case 4: {cout << "Saindo..." << endl;}
+            break;
+        default:{cout << "Opção inválida!" << endl;
+                getchar();}
+        }
+    }
+}
+
+void Principal::menuExe(){
+    int op= -1;
+    while(op!= 4){
+        system("clear");
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1 - Listar Disciplinas" << endl;
+        cout << "2 - Listar Departamentos" << endl;
+        cout << "3 - Listar Universidades" << endl;
+        cout << "4 - Sair" << endl;
+        cin >> op;
+
+        switch (op){
+        case 1:{LDisciplinas.listaDisciplinas();}
+            break;
+        case 2:{LDepartamentos.listaDepartamentos();}
+            break;
+        case 3:{LUniversidades.listaUniversidades();}
+            break;
+        case 4: {cout << "Saindo..." << endl;}
+            break;
+        default:{cout << "Opção inválida!" << endl;
+                getchar();}
+    }
 }

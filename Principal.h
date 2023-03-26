@@ -1,9 +1,9 @@
 #pragma once
 #include "Professor.h"
-#include "Universidade.h"
+#include "ListaUniversidades.h"
+#include "ListaDepartamentos.h"
+#include "ListaDisciplinas.h"
 #include "Aluno.h"
-#include "Departamento.h"
-#include "Disciplina.h"
 
 class Principal{
     private:
@@ -28,6 +28,10 @@ class Principal{
         Aluno BBB;
         Aluno CCC;
         Aluno DDD;
+        
+        ListaUniversidades LUniversidades;
+        ListaDepartamentos LDepartamentos;
+        ListaDisciplinas LDisciplinas;
 
         int diaAtual;
         int mesAtual;
@@ -50,4 +54,12 @@ class Principal{
         void listaDiscDeptos();
         void listaAlunosDisc();
         void executar();
+
+        void cadDisciplina();
+        void cadDepartamento();
+        void cadUniversidade();
+
+        void menu();
+        void menuCad();
+        void menuExe();
 };
