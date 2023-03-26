@@ -1,11 +1,10 @@
 #pragma once
-#include "Departamento.h"
-#include <list>
+#include "ListaDepartamentos.h"
 
 class Universidade{
     private:
-        char nome[50];
-        std::list <Departamento*> LpDptos;
+        char nome[100];
+        ListaDepartamentos objDepartamentos;
         int i;
     
     public:
@@ -14,6 +13,8 @@ class Universidade{
 
         void setNome(const char* n);
         char* getNome();
+
         void setDepartamento(Departamento* pdep);
-        void imprimeDepartamentos();
+        void listaDepartamentos();
+        void listaDepartamentosInv();
 };

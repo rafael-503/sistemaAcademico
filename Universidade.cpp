@@ -1,9 +1,9 @@
 #include "Universidade.h"
 #include <iostream>
 #include <cstring>
-#include <list>
 
-Universidade::Universidade(){}
+
+Universidade::Universidade(): objDepartamentos(){}
 
 Universidade::~Universidade(){}
 
@@ -15,16 +15,15 @@ char* Universidade::getNome(){
     return nome;
 }
 
+
 void Universidade::setDepartamento(Departamento* pdep){
-    if(pdep != nullptr)
-        LpDptos.push_back(pdep);
+    objDepartamentos.setDepartamento(pdep);
 }
 
-void Universidade::imprimeDepartamentos(){
-    std::list <Departamento*>::iterator it;
+void Universidade::listaDepartamentos(){
+    objDepartamentos.listaDepartamentos();
+}
 
-    for(it = LpDptos.begin(); it != LpDptos.end(); it++){
-        if(*it != nullptr)
-            std::cout << (*it)->getNome() << std::endl;
-    }
+void Universidade::listaDepartamentosInv(){
+    objDepartamentos.listaDepartamentosInv();
 }
