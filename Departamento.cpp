@@ -8,7 +8,7 @@
 Departamento::Departamento(){
     pDisciplPrim = nullptr;
     pDisciplAtual = nullptr;
-    objDisciplinas = new ListaDisciplinas(-1, "");
+    objDisciplinas = new ListaDisciplinas();
 }
 
 Departamento::~Departamento(){
