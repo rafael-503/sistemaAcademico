@@ -73,10 +73,14 @@ void ListaAlunos::excluiAluno(Aluno* pa) {
     }
 }
 
+void ListaAlunos::setNome(const char* n){
+    std::strcpy(nome, n);
+}
+
 void ListaAlunos::listaAlunos(){
     ElAluno* pAux = pElAlunoPrim;
     while(pAux != nullptr){
-        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina" << std::endl;
+        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina " << nome << std::endl;
         pAux = pAux->pProx;
     }
 }
@@ -84,7 +88,7 @@ void ListaAlunos::listaAlunos(){
 void ListaAlunos::listaAlunosInv(){
     ElAluno* pAux = pElAlunoAtual;
     while(pAux != nullptr){
-        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina" << std::endl;
+        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina " << nome << std::endl;
         pAux = pAux->pAnt;
     }
 }

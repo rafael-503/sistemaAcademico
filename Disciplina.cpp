@@ -28,6 +28,7 @@ int Disciplina::getId(){
 
 void Disciplina::setNome(const char* n){
     std::strcpy(nome, n);
+    ObjAlunos.setNome(n);
 }
 
 char* Disciplina::getNome(){
@@ -52,11 +53,9 @@ void Disciplina::excluiAluno(Aluno* pa) {
 }
 
 void Disciplina::listaAlunos(){
-    std::cout << nome << std::endl;
     ObjAlunos.listaAlunos();
 }
 
 void Disciplina::listaAlunosInv(){
-    std::cout << nome << std::endl;
     ObjAlunos.listaAlunosInv();
 }

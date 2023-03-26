@@ -1,6 +1,7 @@
 #pragma once
 class Universidade;
 class Disciplina;
+class ListaDisciplinas;
 
 class Departamento{
     private:
@@ -8,6 +9,7 @@ class Departamento{
         Universidade* pUniv;
         Disciplina* pDisciplPrim;
         Disciplina* pDisciplAtual;
+        ListaDisciplinas* objDisciplinas;
 
     public:
         Departamento();

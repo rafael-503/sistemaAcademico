@@ -12,11 +12,12 @@ class ListaAlunos{
         ElAluno* pElAlunoAtual;
 
     public:
-        ListaAlunos(int na, const char* n);
+        ListaAlunos(int na=45, const char* n="");
         ~ListaAlunos();
 
         void incluiAluno(Aluno* pa);
         void excluiAluno(Aluno* pa);
+        void setNome(const char* n);
         void listaAlunos();
         void listaAlunosInv();
 };

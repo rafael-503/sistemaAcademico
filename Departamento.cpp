@@ -1,21 +1,27 @@
 #include "Departamento.h"
 #include "Universidade.h"
 #include "Disciplina.h"
+#include "ListaDisciplinas.h"
 #include <cstring>
 #include <iostream>
 
 Departamento::Departamento(){
     pDisciplPrim = nullptr;
     pDisciplAtual = nullptr;
+    objDisciplinas = new ListaDisciplinas(-1, "");
 }
 
 Departamento::~Departamento(){
     pDisciplPrim = nullptr;
     pDisciplAtual = nullptr;
+
+    if(objDisciplinas != nullptr)
+        delete objDisciplinas;
 }
 
 void Departamento::setNome(const char* n){
     std::strcpy(nome, n);
+    objDisciplinas->setNome(n);
 }
 
 char* Departamento::getNome(){
@@ -31,31 +37,13 @@ Universidade* Departamento::getUniversidade(){
 }
 
 void Departamento::incluiDisciplina(Disciplina* pd){
-    if(pDisciplPrim == nullptr){
-         pDisciplPrim = pd;
-         pDisciplAtual = pd;
-    }
-     else{
-        pDisciplAtual->pProx = pd;
-        pd->pAnt = pDisciplAtual;
-        pDisciplAtual = pd;
-    }
+    objDisciplinas->incluiDisciplina(pd);
 }
 
 void Departamento::listaDisciplinas(){
-    Disciplina* pAux = pDisciplPrim;
-
-    while(pAux != nullptr){
-        std::cout << "A disciplina " << pAux->getNome() << " pertence ao departamento " << getNome() << std::endl;
-        pAux = pAux->pProx;
-    }
+    objDisciplinas->listaDisciplinas();
 }
 
 void Departamento::listaDisciplinasInv(){
-    Disciplina* pAux = pDisciplAtual;
-
-    while(pAux != nullptr){
-        std::cout << "A disciplina " << pAux->getNome() << " pertence ao departamento " << getNome() << std::endl;
-        pAux = pAux->pAnt;
-    }
+    objDisciplinas->listaDisciplinasInv();
 }
