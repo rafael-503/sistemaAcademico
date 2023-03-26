@@ -75,7 +75,10 @@ void Disciplina::incluiAluno(Aluno* pa){
         cont_alunos++;
     }
     else{
-        std::cout << "Aluno nao incluido, turma lotada" << std::endl;
+        if(pa != nullptr)
+            std::cout << "Aluno nao incluido, turma lotada" << std::endl;
+        else
+            std::cout << "Ponteiro nulo" << std::endl;
     }
 }
 
