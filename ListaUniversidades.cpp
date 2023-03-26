@@ -1,2 +1,40 @@
 #include "ListaUniversidades.h"
+#include <cstring>
 
+ListaUniversidades::ListaUniversidades(int nu, const char* n){
+    cont_univ = 0;
+    numero_univ = nu;
+    strcpy(nome, n);
+    pElUniversidadePrim = nullptr;
+    pElUniversidadeAtual = nullptr;
+}
+
+ListaUniversidades::~ListaUniversidades(){
+    ElUniversidade* pAux;
+    while(pElUniversidadePrim != nullptr){
+        pAux = pElUniversidadePrim;
+        pElUniversidadePrim = pElUniversidadePrim->pProx;
+        delete pAux;
+    }
+    pElUniversidadePrim = nullptr;
+    pElUniversidadeAtual = nullptr;
+}
+
+void ListaUniversidades::incluiUniversidade(Universidade* pu){
+    if((cont_univ < numero_univ) && (pu != nullptr)){
+        ElUniversidade* pAux = new ElUniversidade();
+        pAux->setUniversidade(pu);
+        pAux->pProx = nullptr;
+        pAux->pAnt = nullptr;
+
+        if(pElUniversidadePrim == nullptr){
+            pElUniversidadePrim = pAux;
+            pElUniversidadeAtual = pAux;
+        }else{
+            pElUniversidadeAtual->pProx = pAux;
+            pAux->pAnt = pElUniversidadeAtual;
+            pElUniversidadeAtual = pAux;
+        }
+        cont_univ++;
+    }
+}
