@@ -76,7 +76,7 @@ void ListaAlunos::excluiAluno(Aluno* pa) {
 void ListaAlunos::listaAlunos(){
     ElAluno* pAux = pElAlunoPrim;
     while(pAux != nullptr){
-        std::cout << "O aluno " << pAux->getAluno()->getNome() << " está matriculado na disciplina" << nome << std::endl;
+        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina" << std::endl;
         pAux = pAux->pProx;
     }
 }
@@ -84,7 +84,7 @@ void ListaAlunos::listaAlunos(){
 void ListaAlunos::listaAlunosInv(){
     ElAluno* pAux = pElAlunoAtual;
     while(pAux != nullptr){
-        std::cout << pAux->getAluno()->getNome() << std::endl;
+        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina" << std::endl;
         pAux = pAux->pAnt;
     }
 }

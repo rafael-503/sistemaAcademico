@@ -52,9 +52,11 @@ void Disciplina::excluiAluno(Aluno* pa) {
 }
 
 void Disciplina::listaAlunos(){
+    std::cout << nome << std::endl;
     ObjAlunos.listaAlunos();
 }
 
 void Disciplina::listaAlunosInv(){
+    std::cout << nome << std::endl;
     ObjAlunos.listaAlunosInv();
 }
