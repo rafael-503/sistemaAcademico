@@ -50,6 +50,30 @@ void ListaDepartamentos::setDepartamento(Departamento* pd){
     }
 }
 
+void ListaDepartamentos::incluiDepartamento(Departamento* pd){
+    if((cont_dep < numero_dep) && (pd !=nullptr)){
+        ElDepartamento* pAux = nullptr;
+        pAux = new ElDepartamento();
+        pAux->setDepartamento(pd);
+        pAux->pProx = nullptr;
+        pAux->pAnt = nullptr;
+
+        if(pElDepartamentoPrim == nullptr){
+            pElDepartamentoPrim = pAux;
+            pElDepartamentoAtual = pAux;
+        }
+        else{
+            pElDepartamentoAtual->pProx = pAux;
+            pAux->pAnt = pElDepartamentoAtual;
+            pElDepartamentoAtual = pAux;
+        }
+        cont_dep++;
+    }
+    else{
+        std::cout << "Erro: numero de departamentos excedido ou ponteiro nulo" << std::endl;
+    }
+}
+
 void ListaDepartamentos::listaDepartamentos(){
     ElDepartamento* pAux = pElDepartamentoPrim;
     while(pAux != nullptr){

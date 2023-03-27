@@ -1,5 +1,4 @@
 #include "Principal.h"
-#include "Universidade.h"
 #include <ctime>
 #include <iostream>
 using std::cin;
@@ -37,6 +36,14 @@ void Principal::inicializaDepartamentos(){
     DAINF.setNome("DAINF");
     FisicaPrinceton.setNome("Fisica Princeton");
     MatematicaCambdrige.setNome("Matematica Cambdrige");
+
+    LDepartamentos.incluiDepartamento(&DAINF);
+    LDepartamentos.incluiDepartamento(&FisicaPrinceton);
+    LDepartamentos.incluiDepartamento(&MatematicaCambdrige);
+
+    UTFPR.setDepartamento(&DAINF);
+    Princeton.setDepartamento(&FisicaPrinceton);
+    Cambdrige.setDepartamento(&MatematicaCambdrige);
 }
 
 void Principal::inicializaProfessores(){
@@ -128,11 +135,33 @@ void Principal::executar(){
     menu();
 }
 
-void Principal::cadDisciplina(){}
+void Principal::cadDisciplina(){
+
+}
 
 void Principal::cadDepartamento(){
     char nomeUniversidade[100];
     char nomeDepartamento[100];
+    Universidade* pUniv = nullptr;
+    Departamento* pDepart = nullptr;
+
+    cout << "Informe o nome da universidade: ";
+    cin >> nomeUniversidade;
+    pUniv = LUniversidades.localizar(nomeUniversidade);
+
+    if (pUniv != nullptr){
+        cout << "Informe o nome do departamento: ";
+        cin >> nomeDepartamento;
+
+        pDepart = new Departamento();
+        pDepart->setNome(nomeDepartamento);
+        pDepart->setUniversidade(pUniv);
+        LDepartamentos.incluiDepartamento(pDepart);
+        pUniv->setDepartamento(pDepart);
+    }
+    else{
+        cout << "Universidade não encontrada!" << endl;
+    }
 }
 
 void Principal::cadUniversidade(){
@@ -221,5 +250,6 @@ void Principal::menuExe(){
             break;
         default:{cout << "Opção inválida!" << endl;
                 getchar();}
+        }
     }
 }

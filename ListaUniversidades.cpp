@@ -1,5 +1,6 @@
 #include "ListaUniversidades.h"
 #include <cstring>
+#include <iostream>
 
 ListaUniversidades::ListaUniversidades(int nu, const char* n){
     cont_univ = 0;
@@ -37,4 +38,31 @@ void ListaUniversidades::incluiUniversidade(Universidade* pu){
         }
         cont_univ++;
     }
+}
+
+void ListaUniversidades::listaUniversidades(){
+    ElUniversidade* pAux = pElUniversidadePrim;
+    while(pAux != nullptr){
+        std::cout << "Universidade: " << pAux->getNome() << "no sistema " << nome << std::endl;
+        pAux = pAux->pProx;
+    }
+}
+
+void ListaUniversidades::listaUniversidadesInv(){
+    ElUniversidade* pAux = pElUniversidadeAtual;
+    while(pAux != nullptr){
+        std::cout << "Universidade: " << pAux->getNome() << "no sistema " << nome << std::endl;
+        pAux = pAux->pAnt;
+    }
+}
+
+Universidade* ListaUniversidades::localizar(const char* n){
+    ElUniversidade* pAux = pElUniversidadePrim;
+    while(pAux != nullptr){
+        if(strcmp(pAux->getNome(), n) == 0){
+            return pAux->getUniversidade();
+        }
+        pAux = pAux->pProx;
+    }
+    return nullptr;
 }

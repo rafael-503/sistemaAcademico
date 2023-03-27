@@ -17,6 +17,7 @@ class ListaDepartamentos{
 
         void setNome(const char* n);
         void setDepartamento(Departamento* pd);
+        void incluiDepartamento(Departamento* pd);
         void listaDepartamentos();
         void listaDepartamentosInv();
 };
