@@ -141,7 +141,7 @@ void Principal::executar(){
 }
 
 void Principal::cadDisciplina(){
-
+    
 }
 
 void Principal::cadDepartamento(){
@@ -179,6 +179,8 @@ void Principal::cadUniversidade(){
     pUniv = new Universidade();
     pUniv->setNome(nomeUniversidade);
     LUniversidades.incluiUniversidade(pUniv);
+
+    cout << "Universidade cadastrada com sucesso!" << endl;
 }
 
 void Principal::menu(){
@@ -219,11 +221,17 @@ void Principal::menuCad(){
         cin >> op;
 
         switch (op){
-        case 1:{cadDisciplina();}
+        case 1:{cadDisciplina();
+                getchar();
+                getchar();}
             break;
-        case 2:{cadDepartamento();}
+        case 2:{cadDepartamento();
+                getchar();
+                getchar();}
             break;
-        case 3:{cadUniversidade();}
+        case 3:{cadUniversidade();
+                getchar();
+                getchar();}
             break;
         case 4: {cout << "Saindo..." << endl;}
             break;
