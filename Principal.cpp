@@ -28,8 +28,13 @@ void Principal::inicializa(){
 
 void Principal::inicializaUniversidades(){
     UTFPR.setNome("UTFPR");
+    LUniversidades.incluiUniversidade(&UTFPR);
+
     Princeton.setNome("Princeton University");
+    LUniversidades.incluiUniversidade(&Princeton);
+
     Cambdrige.setNome("Cambdrige University");
+    LUniversidades.incluiUniversidade(&Cambdrige);
 }
 
 void Principal::inicializaDepartamentos(){
@@ -240,15 +245,23 @@ void Principal::menuExe(){
         cin >> op;
 
         switch (op){
-        case 1:{LDisciplinas.listaDisciplinas();}
+        case 1:{LDisciplinas.listaDisciplinas();
+                getchar();
+                getchar();}
             break;
-        case 2:{LDepartamentos.listaDepartamentos();}
+        case 2:{LDepartamentos.listaDepartamentos();
+                getchar();
+                getchar();}
             break;
-        case 3:{LUniversidades.listaUniversidades();}
+        case 3:{LUniversidades.listaUniversidades();
+                getchar();
+                getchar();}
+
             break;
         case 4: {cout << "Saindo..." << endl;}
             break;
         default:{cout << "Opção inválida!" << endl;
+                getchar();
                 getchar();}
         }
     }

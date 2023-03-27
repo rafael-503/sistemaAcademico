@@ -77,7 +77,7 @@ void ListaDepartamentos::incluiDepartamento(Departamento* pd){
 void ListaDepartamentos::listaDepartamentos(){
     ElDepartamento* pAux = pElDepartamentoPrim;
     while(pAux != nullptr){
-        std::cout << pAux->getDepartamento()->getNome() << std::endl;
+        std::cout << "Departamento: " << pAux->getDepartamento()->getNome() << std::endl;
         pAux = pAux->pProx;
     }
 }
@@ -85,7 +85,7 @@ void ListaDepartamentos::listaDepartamentos(){
 void ListaDepartamentos::listaDepartamentosInv(){
     ElDepartamento* pAux = pElDepartamentoAtual;
     while(pAux != nullptr){
-        std::cout << pAux->getDepartamento()->getNome() << std::endl;
+        std::cout << "Departamento: " << pAux->getDepartamento()->getNome() << std::endl;
         pAux = pAux->pAnt;
     }
 }

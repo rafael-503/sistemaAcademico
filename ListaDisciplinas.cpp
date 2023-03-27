@@ -53,7 +53,7 @@ void ListaDisciplinas::incluiDisciplina(Disciplina* pd){
 void ListaDisciplinas::listaDisciplinas(){
     ElDisciplina* pAux = pElDisciplinaPrim;
     while(pAux != nullptr){
-        std::cout << pAux->getDisciplina()->getNome() << std::endl;
+        std::cout << "Disciplina: " << pAux->getNome() << " do departamento: " << nome << std::endl;
         pAux = pAux->pProx;
     }
 }
@@ -61,7 +61,7 @@ void ListaDisciplinas::listaDisciplinas(){
 void ListaDisciplinas::listaDisciplinasInv(){
     ElDisciplina* pAux = pElDisciplinaAtual;
     while(pAux != nullptr){
-        std::cout << pAux->getDisciplina()->getNome() << std::endl;
+        std::cout << "Disciplina: " << pAux->getNome() << " do departamento: " << nome << std::endl;
         pAux = pAux->pAnt;
     }
 }

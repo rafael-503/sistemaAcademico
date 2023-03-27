@@ -43,7 +43,7 @@ void ListaUniversidades::incluiUniversidade(Universidade* pu){
 void ListaUniversidades::listaUniversidades(){
     ElUniversidade* pAux = pElUniversidadePrim;
     while(pAux != nullptr){
-        std::cout << "Universidade: " << pAux->getNome() << "no sistema " << nome << std::endl;
+        std::cout << "Universidade: " << pAux->getNome() << std::endl;
         pAux = pAux->pProx;
     }
 }
@@ -51,7 +51,7 @@ void ListaUniversidades::listaUniversidades(){
 void ListaUniversidades::listaUniversidadesInv(){
     ElUniversidade* pAux = pElUniversidadeAtual;
     while(pAux != nullptr){
-        std::cout << "Universidade: " << pAux->getNome() << "no sistema " << nome << std::endl;
+        std::cout << "Universidade: " << pAux->getNome() << std::endl;
         pAux = pAux->pAnt;
     }
 }
