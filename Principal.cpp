@@ -70,9 +70,16 @@ void Principal::inicializaProfessores(){
 
 void Principal::inicializaDisciplinas(){
     Computacao1.setNome("Computacao 1");
+    LDisciplinas.incluiDisciplina(&Computacao1);
+
     Computacao2.setNome("Computacao 2");
+    LDisciplinas.incluiDisciplina(&Computacao2);
+
     Algoritmos.setNome("Algoritmos");
+    LDisciplinas.incluiDisciplina(&Algoritmos);
+
     TecProg.setNome("Tecnicas de Programacao");
+    LDisciplinas.incluiDisciplina(&TecProg);
 
     Computacao1.setDepartamento(&DAINF);
     Computacao2.setDepartamento(&DAINF);
@@ -83,6 +90,8 @@ void Principal::inicializaDisciplinas(){
     TecProg.incluiAluno(&BBB);
     Algoritmos.incluiAluno(&AAA);
     Algoritmos.incluiAluno(&DDD);
+
+
 
     //TecProg.excluiAluno(&BBB);
     //TecProg.excluiAluno(&AAA);

@@ -32,6 +32,7 @@ void ListaDisciplinas::incluiDisciplina(Disciplina* pd){
     if((cont_disc < numero_disc) && (pd != nullptr)){
         ElDisciplina* pAux = nullptr;
         pAux = new ElDisciplina();
+        pAux->setDisciplina(pd);
 
         if(pElDisciplinaPrim == nullptr){
             pElDisciplinaPrim = pAux;
