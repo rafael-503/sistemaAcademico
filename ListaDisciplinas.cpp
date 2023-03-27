@@ -28,6 +28,10 @@ void ListaDisciplinas::setNome(const char* n){
     std::strcpy(nome, n);
 }
 
+char* ListaDisciplinas::getNome(){
+    return nome;
+}
+
 void ListaDisciplinas::incluiDisciplina(Disciplina* pd){
     if((cont_disc < numero_disc) && (pd != nullptr)){
         ElDisciplina* pAux = nullptr;
@@ -54,7 +58,7 @@ void ListaDisciplinas::incluiDisciplina(Disciplina* pd){
 void ListaDisciplinas::listaDisciplinas(){
     ElDisciplina* pAux = pElDisciplinaPrim;
     while(pAux != nullptr){
-        std::cout << "Disciplina: " << pAux->getNome() << " do departamento: " << nome << std::endl;
+        std::cout << "Disciplina: " << pAux->getNome() << " do departamento: " << getNome() << std::endl;
         pAux = pAux->pProx;
     }
 }

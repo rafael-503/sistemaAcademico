@@ -16,8 +16,9 @@ class ListaDisciplinas{
         ~ListaDisciplinas();
 
         void setNome(const char* n);
-        void incluiDisciplina(Disciplina* pd);
+        char* getNome();
 
+        void incluiDisciplina(Disciplina* pd);
         void listaDisciplinas();
         void listaDisciplinasInv();
 };
