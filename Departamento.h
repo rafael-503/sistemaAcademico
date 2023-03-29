@@ -10,9 +10,10 @@ class Departamento{
         Disciplina* pDisciplPrim;
         Disciplina* pDisciplAtual;
         ListaDisciplinas* objDisciplinas;
+        int id;
 
     public:
-        Departamento();
+        Departamento(int i=-1);
         ~Departamento();
 
         void setNome(const char* n);

@@ -7,7 +7,7 @@ class Aluno: public Pessoa{
 
     public:
         Aluno(int diaNA, int mesNA, int anoNA, const char* nome="");
-        Aluno();
+        Aluno(int i=-1);
         ~Aluno();
 
         void setRA(int ra);

@@ -5,7 +5,12 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-Principal::Principal(): Einsten(), Newton(), Simao(){
+Principal::Principal():
+ Einsten(), Newton(), Simao(),
+ contIdALuno(0), contIdDepart(0), contIdDisc(0),
+ Computacao1(contIdDisc++), Computacao2(contIdDisc++), Algoritmos(contIdDisc++), TecProg(contIdDisc++),
+ AAA(contIdALuno++), BBB(contIdALuno++), CCC(contIdALuno++), DDD(contIdALuno++),
+ DAINF(contIdDepart++), FisicaPrinceton(contIdDepart++), MatematicaCambdrige(contIdDepart++){
     // leitura da data atual
     time_t now = time(nullptr);
     tm *local = localtime(&now);
@@ -192,6 +197,23 @@ void Principal::cadUniversidade(){
     cout << "Universidade cadastrada com sucesso!" << endl;
 }
 
+void Principal::cadAluno(){
+
+}
+
+void Principal::gravarTudo(){}
+void Principal::gravarUniversidades(){}
+void Principal::gravarDepartamentos(){}
+void Principal::gravarDisciplinas(){}
+void Principal::gravarAlunos(){}
+void Principal::gravarProfessores(){}
+void Principal::recuperarTudo(){}
+void Principal::recuperarUniversidades(){}
+void Principal::recuperarDepartamentos(){}
+void Principal::recuperarDisciplinas(){}
+void Principal::recuperarAlunos(){}
+void Principal::recuperarProfessores(){}
+
 void Principal::menu(){
     int op= -1;
 
@@ -283,3 +305,6 @@ void Principal::menuExe(){
         }
     }
 }
+
+void Principal::menuGravar(){}
+void Principal::menuRecuperar(){}

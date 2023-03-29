@@ -5,7 +5,7 @@
 #include <cstring>
 #include <iostream>
 
-Departamento::Departamento(){
+Departamento::Departamento(int i): id(i){
     pDisciplPrim = nullptr;
     pDisciplAtual = nullptr;
     objDisciplinas = new ListaDisciplinas();

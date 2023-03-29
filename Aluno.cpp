@@ -2,12 +2,12 @@
 #include <cstring>
 
 Aluno::Aluno(int diaNA, int mesNA, int anoNA, const char* nome): Pessoa(diaNA, mesNA, anoNA, nome){
-    RA = -1;
+    RA = 0;
     std::strcpy(nomeP, nome);
 }
 
-Aluno::Aluno(): Pessoa(){
-    RA = -1;
+Aluno::Aluno(int i): Pessoa(i), RA(0){
+    RA = 0;
 }
 
 Aluno::~Aluno(){

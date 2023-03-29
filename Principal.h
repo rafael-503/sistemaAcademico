@@ -7,9 +7,9 @@
 
 class Principal{
     private:
-        Professor Einsten;
-        Professor Newton;
-        Professor Simao;
+        int contIdDisc;
+        int contIdDepart;
+        int contIdALuno;
 
         Universidade UTFPR;
         Universidade Princeton;
@@ -18,6 +18,10 @@ class Principal{
         Departamento DAINF;
         Departamento FisicaPrinceton;
         Departamento MatematicaCambdrige;
+
+        Professor Einsten;
+        Professor Newton;
+        Professor Simao;
 
         Disciplina Computacao1;
         Disciplina Computacao2;
@@ -32,6 +36,7 @@ class Principal{
         ListaUniversidades LUniversidades;
         ListaDepartamentos LDepartamentos;
         ListaDisciplinas LDisciplinas;
+        ListaAlunos LAlunos;
 
         int diaAtual;
         int mesAtual;
@@ -58,8 +63,25 @@ class Principal{
         void cadDisciplina();
         void cadDepartamento();
         void cadUniversidade();
+        void cadAluno();
+
+        void gravarTudo();
+        void gravarUniversidades();
+        void gravarDepartamentos();
+        void gravarDisciplinas();
+        void gravarAlunos();
+        void gravarProfessores();
+
+        void recuperarTudo();
+        void recuperarUniversidades();
+        void recuperarDepartamentos();
+        void recuperarDisciplinas();
+        void recuperarAlunos();
+        void recuperarProfessores();
 
         void menu();
         void menuCad();
         void menuExe();
+        void menuGravar();
+        void menuRecuperar();
 };

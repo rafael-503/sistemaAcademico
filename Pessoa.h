@@ -12,7 +12,7 @@ class Pessoa{
 
     public:
         Pessoa(int diaNA, int mesNA, int anoNA, const char* nome="");
-        Pessoa();
+        Pessoa(int i=-1);
         ~Pessoa();
 
         void inicializa(int diaNA, int mesNA, int anoNA, const char* nome="");
