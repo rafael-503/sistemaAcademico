@@ -104,13 +104,17 @@ void Principal::inicializaDisciplinas(){
 
 void Principal::inicializaAlunos(){
     AAA.setNome("AA");
-    AAA.setRA(1);
+    LAlunos.incluiAluno(&AAA);
+
     BBB.setNome("BB");
-    BBB.setRA(2);
+    LAlunos.incluiAluno(&BBB);
+
     CCC.setNome("CC");
-    CCC.setRA(3);
+    LAlunos.incluiAluno(&CCC);
+
     DDD.setNome("DD");
-    DDD.setRA(4);
+    LAlunos.incluiAluno(&DDD);
+
 }
 
 void Principal::calcIdadeProf(){
@@ -198,31 +202,56 @@ void Principal::cadUniversidade(){
 }
 
 void Principal::cadAluno(){
+    char nomeAluno[100];
+    int ra;
+    Aluno* pAluno = nullptr;
 
+    cout << "Informe o nome do aluno: " << endl;
+    cin >> nomeAluno;
+
+    cout << "Informe o RA do aluno: " << endl;
+    cin >> ra;
+
+    pAluno = new Aluno(contIdAluno++);
+
+    pAluno->setNome(nomeAluno);
+    pAluno->setRA(ra);
+    LAlunos.incluiAluno(pAluno);
+
+    cout << "Aluno cadastrado com sucesso!" << endl;
 }
 
 void Principal::gravarTudo(){}
 void Principal::gravarUniversidades(){}
 void Principal::gravarDepartamentos(){}
 void Principal::gravarDisciplinas(){}
-void Principal::gravarAlunos(){}
+
+void Principal::gravarAlunos(){
+    LAlunos.gravarAlunos();
+}
+
 void Principal::gravarProfessores(){}
 void Principal::recuperarTudo(){}
 void Principal::recuperarUniversidades(){}
 void Principal::recuperarDepartamentos(){}
 void Principal::recuperarDisciplinas(){}
-void Principal::recuperarAlunos(){}
+
+void Principal::recuperarAlunos(){
+    LAlunos.recuperarAlunos();
+}
 void Principal::recuperarProfessores(){}
 
 void Principal::menu(){
     int op= -1;
 
-    while (op!= 3){
+    while (op!= 5){
         system("clear");
         cout << "Informe a opção desejada: " << endl;
         cout << "1 - Cadastrar" << endl;
         cout << "2 - Executar" << endl;
-        cout << "3 - Sair" << endl;
+        cout << "3 - Gravar" << endl;
+        cout << "4 - Recuperar" << endl;
+        cout << "5 - Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -230,25 +259,29 @@ void Principal::menu(){
             break;
         case 2:{menuExe();}
             break;
-        case 3: {cout << "Saindo..." << endl;}
+        case 3:{menuGravar();}
+            break;
+        case 4:{menuRecuperar();}
+            break;
+        case 5: {cout << "Saindo..." << endl;}
             break;
         default:{cout << "Opção inválida!" << endl;
                 getchar();}
         }
     }
-    
 }
 
 void Principal::menuCad(){
     int op= -1;
 
-    while (op!= 4){
+    while (op!= 5){
         system("clear");
         cout << "Informe a opção desejada: " << endl;
         cout << "1 - Cadastrar Disciplina" << endl;
         cout << "2 - Cadastrar Departamento" << endl;
         cout << "3 - Cadastrar Universidade" << endl;
-        cout << "4 - Sair" << endl;
+        cout << "4 - Cadastrar Aluno" << endl;
+        cout << "5 - Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -264,7 +297,11 @@ void Principal::menuCad(){
                 getchar();
                 getchar();}
             break;
-        case 4: {cout << "Saindo..." << endl;}
+        case 4:{cadAluno();
+                getchar();
+                getchar();}
+            break;
+        case 5: {cout << "Saindo..." << endl;}
             break;
         default:{cout << "Opção inválida!" << endl;
                 getchar();}
@@ -274,13 +311,14 @@ void Principal::menuCad(){
 
 void Principal::menuExe(){
     int op= -1;
-    while(op!= 4){
+    while(op!= 5){
         system("clear");
         cout << "Informe a opção desejada: " << endl;
         cout << "1 - Listar Disciplinas" << endl;
         cout << "2 - Listar Departamentos" << endl;
         cout << "3 - Listar Universidades" << endl;
-        cout << "4 - Sair" << endl;
+        cout << "4 - Listar Alunos" << endl;
+        cout << "5 - Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -295,9 +333,12 @@ void Principal::menuExe(){
         case 3:{LUniversidades.listaUniversidades();
                 getchar();
                 getchar();}
-
             break;
-        case 4: {cout << "Saindo..." << endl;}
+        case 4:{LAlunos.listaAlunos();
+                getchar();
+                getchar();}
+            break;
+        case 5: {cout << "Saindo..." << endl;}
             break;
         default:{cout << "Opção inválida!" << endl;
                 getchar();
@@ -306,5 +347,98 @@ void Principal::menuExe(){
     }
 }
 
-void Principal::menuGravar(){}
-void Principal::menuRecuperar(){}
+void Principal::menuGravar(){
+    int op= -1;
+    while (op != 6){
+        system("clear");
+        cout << "Informe a opção desejada: " << endl;
+        cout << "0 - Gravar Tudo" << endl;
+        cout << "1 - Gravar Universidades" << endl;
+        cout << "2 - Gravar Departamentos" << endl;
+        cout << "3 - Gravar Disciplinas" << endl;
+        cout << "4 - Gravar Alunos" << endl;
+        cout << "5 - Gravar Professores" << endl;
+        cout << "6 - Sair" << endl;
+        cin >> op;
+
+        switch (op){
+        case 0:{gravarTudo();
+                getchar();
+                getchar();}
+            break;
+        case 1:{gravarUniversidades();
+                getchar();
+                getchar();}
+            break;
+        case 2:{gravarDepartamentos();
+                getchar();
+                getchar();}
+            break;
+        case 3:{gravarDisciplinas();
+                getchar();
+                getchar();}
+            break;
+        case 4:{gravarAlunos();
+                getchar();
+                getchar();}
+            break;
+        case 5:{gravarProfessores();
+                getchar();
+                getchar();}
+            break;
+        case 6: {cout << "Saindo..." << endl;}
+            break;
+        default:{cout << "Opção inválida!" << endl;
+                getchar();
+                getchar();}
+        }
+    }
+}
+
+void Principal::menuRecuperar(){
+    int op= -1;
+    while (op != 6){
+        system("clear");
+        cout << "Informe a opção desejada: " << endl;
+        cout << "0 - Recuperar Tudo" << endl;
+        cout << "1 - Recuperar Universidades" << endl;
+        cout << "2 - Recuperar Departamentos" << endl;
+        cout << "3 - Recuperar Disciplinas" << endl;
+        cout << "4 - Recuperar Alunos" << endl;
+        cout << "4 - Recuperar Professores" << endl;
+        cout << "6 - Sair" << endl;
+        cin >> op;
+
+        switch (op){
+        case 0:{recuperarTudo();
+                getchar();
+                getchar();}
+            break;
+        case 1:{recuperarUniversidades();
+                getchar();
+                getchar();}
+            break;
+        case 2:{recuperarDepartamentos();
+                getchar();
+                getchar();}
+            break;
+        case 3:{recuperarDisciplinas();
+                getchar();
+                getchar();}
+            break;
+        case 4:{recuperarAlunos();
+                getchar();
+                getchar();}
+            break;
+        case 5:{recuperarProfessores();
+                getchar();
+                getchar();}
+            break;
+        case 6: {cout << "Saindo..." << endl;}
+            break;
+        default:{cout << "Opção inválida!" << endl;
+                getchar();
+                getchar();}
+        }
+    }
+}

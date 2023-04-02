@@ -12,4 +12,6 @@ class ElAluno{
         void setAluno(Aluno* pa);
         Aluno* getAluno();
         char* getNome();
+        int getID();
+        int getRA();
 };

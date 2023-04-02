@@ -1,6 +1,7 @@
 #include "ListaAlunos.h"
 #include <cstring>
 #include <iostream>
+#include <fstream>
 
 ListaAlunos::ListaAlunos(int na, const char* n){
     cont_alunos = 0;
@@ -11,17 +12,7 @@ ListaAlunos::ListaAlunos(int na, const char* n){
 }
 
 ListaAlunos::~ListaAlunos(){
-    ElAluno* pAux;
-    pAux = pElAlunoPrim;
-    
-    while(pElAlunoPrim != nullptr){
-        pElAlunoPrim = pElAlunoPrim->pProx;
-        delete pAux;
-        pAux = pElAlunoPrim;
-    }
-    
-    pElAlunoAtual = nullptr;
-    pElAlunoPrim = nullptr;
+    limpaLista();
 }
 
 void ListaAlunos::incluiAluno(Aluno* pa){
@@ -91,4 +82,74 @@ void ListaAlunos::listaAlunosInv(){
         std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina " << nome << std::endl;
         pAux = pAux->pAnt;
     }
+}
+
+void ListaAlunos::limpaLista(){
+    ElAluno* pAux;
+    pAux = pElAlunoPrim;
+    
+    while(pElAlunoPrim != nullptr){
+        pElAlunoPrim = pElAlunoPrim->pProx;
+        delete pAux;
+        pAux = pElAlunoPrim;
+    }
+    
+    pElAlunoAtual = nullptr;
+    pElAlunoPrim = nullptr;
+}
+
+
+void ListaAlunos::gravarAlunos(){
+    std::ofstream GravadorAlunos("alunos.dat", std::ios::out);
+
+    if(!GravadorAlunos){
+        std::cerr << "Erro ao abrir o arquivo" << std::endl;
+        getchar();
+        return;
+    }
+
+    ElAluno* pAuxElAluno = nullptr;
+    Aluno* pAuxAluno = nullptr;
+    pAuxElAluno = pElAlunoPrim;
+
+    while(pAuxElAluno != nullptr){
+        pAuxAluno = pAuxElAluno->getAluno();
+
+        GravadorAlunos << pAuxAluno->getID() << ' '
+                        << pAuxAluno->getRA() << ' '
+                        << pAuxAluno->getNome() << std::endl;
+        pAuxElAluno = pAuxElAluno->pProx;
+    }
+    GravadorAlunos.close();
+
+    std::cout << "Alunos gravados com sucesso" << std::endl;
+}
+
+void ListaAlunos::recuperarAlunos(){
+    std::ifstream RecuperadorAlunos("alunos.dat", std::ios::in);
+
+    if(!RecuperadorAlunos){
+        std::cerr << "Erro ao abrir o arquivo" << std::endl;
+        getchar();
+        return;
+    }
+
+    limpaLista();
+    Aluno* pAuxAluno = nullptr;
+    int id, RA;
+    char nome[100];
+
+    while(RecuperadorAlunos >> id >> RA >> nome){
+        if(strcmp(nome, "") != 0){
+            pAuxAluno = new Aluno(-1);
+            pAuxAluno->setID(id);
+            pAuxAluno->setRA(RA);
+            pAuxAluno->setNome(nome);
+
+            incluiAluno(pAuxAluno);
+        }
+    }
+    RecuperadorAlunos.close();
+
+    std::cout << "Alunos recuperados com sucesso" << std::endl;
 }

@@ -20,4 +20,8 @@ class ListaAlunos{
         void setNome(const char* n);
         void listaAlunos();
         void listaAlunosInv();
+        void limpaLista();
+        void gravarAlunos();
+        void recuperarAlunos();
+
 };

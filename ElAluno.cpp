@@ -21,3 +21,11 @@ Aluno* ElAluno::getAluno(){
 char* ElAluno::getNome(){
     return pAluno->getNome();
 }
+
+int ElAluno::getID(){
+    return pAluno->getID();
+}
+
+int ElAluno::getRA(){
+    return pAluno->getRA();
+}
