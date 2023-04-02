@@ -9,7 +9,7 @@ class Principal{
     private:
         int contIdDisc;
         int contIdDepart;
-        int contIdALuno;
+        int contIdAluno;
 
         Universidade UTFPR;
         Universidade Princeton;

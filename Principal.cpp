@@ -7,9 +7,9 @@ using std::endl;
 
 Principal::Principal():
  Einsten(), Newton(), Simao(),
- contIdALuno(0), contIdDepart(0), contIdDisc(0),
+ contIdAluno(0), contIdDepart(0), contIdDisc(0),
  Computacao1(contIdDisc++), Computacao2(contIdDisc++), Algoritmos(contIdDisc++), TecProg(contIdDisc++),
- AAA(contIdALuno++), BBB(contIdALuno++), CCC(contIdALuno++), DDD(contIdALuno++),
+ AAA(contIdAluno++), BBB(contIdAluno++), CCC(contIdAluno++), DDD(contIdAluno++),
  DAINF(contIdDepart++), FisicaPrinceton(contIdDepart++), MatematicaCambdrige(contIdDepart++){
     // leitura da data atual
     time_t now = time(nullptr);

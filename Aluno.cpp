@@ -7,7 +7,7 @@ Aluno::Aluno(int diaNA, int mesNA, int anoNA, const char* nome): Pessoa(diaNA, m
 }
 
 Aluno::Aluno(int i): Pessoa(i), RA(0){
-    RA = 0;
+    id = i;
 }
 
 Aluno::~Aluno(){

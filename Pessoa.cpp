@@ -2,8 +2,9 @@
 #include <iostream>
 #include <cstring>
 
-Pessoa::Pessoa(){
+Pessoa::Pessoa(int i){
     inicializa(0, 0, 0);
+    id = i;
 }
 
 Pessoa::~Pessoa(){}
