@@ -1,7 +1,7 @@
 #pragma once
+#include <cstring>
 
 template <class TIPO>
-
 class Elemento{
     private:
         Elemento<TIPO>* pProximo;
@@ -22,7 +22,7 @@ class Elemento{
         void setInfo(TIPO* pInf);
         TIPO *getInfo();
 
-        void setNome(char* n);
+        void setNome(const char* n);
         char* getNome();         
 };
 
@@ -69,7 +69,7 @@ TIPO* Elemento<TIPO>::getInfo(){
 }
 
 template <class TIPO>
-void Elemento<TIPO>::setNome(char* n){
+void Elemento<TIPO>::setNome(const char* n){
     strcpy(nome, n);
 }
 

@@ -7,6 +7,7 @@ ListaAlunos::ListaAlunos(int na, const char* n){
     cont_alunos = 0;
     numero_alunos = na;
     std::strcpy(nome, n);
+    
     pElAlunoPrim = nullptr;
     pElAlunoAtual = nullptr;
 }
@@ -17,17 +18,17 @@ ListaAlunos::~ListaAlunos(){
 
 void ListaAlunos::incluiAluno(Aluno* pa){
     if((cont_alunos < numero_alunos) && (pa != nullptr)){
-        ElAluno* pAux = nullptr;
-        pAux = new ElAluno();
-        pAux->setAluno(pa);
-
+        Elemento<Aluno> *pAux = nullptr;
+        pAux = new Elemento<Aluno>();
+        pAux->setInfo(pa);
+        
         if(pElAlunoPrim == nullptr){
             pElAlunoPrim = pAux;
             pElAlunoAtual = pAux;
         }
         else{
-            pElAlunoAtual->pProx = pAux;
-            pAux->pAnt = pElAlunoAtual;
+            pElAlunoAtual->setProximo(pAux);
+            pAux->setAnterior(pElAlunoAtual);
             pElAlunoAtual = pAux;
         }
         cont_alunos++;
@@ -41,26 +42,27 @@ void ListaAlunos::incluiAluno(Aluno* pa){
 }
 
 void ListaAlunos::excluiAluno(Aluno* pa) {
-    ElAluno* pAux = pElAlunoPrim;
+    Elemento<Aluno> *pAux = pElAlunoPrim;
 
     while (pAux != nullptr) {
-        if (pAux->getAluno() == pa) {
+        if (pAux->getInfo() == pa) {
             if (pAux == pElAlunoPrim) {
-                pElAlunoPrim = pAux->pProx;
+                
+                pElAlunoPrim = pAux->getProximo();
             }
             if (pAux == pElAlunoAtual) {
-                pElAlunoAtual = pAux->pAnt;
+                pElAlunoAtual = pAux->getAnterior();
             }
-            if (pAux->pAnt != nullptr) {
-                pAux->pAnt->pProx = pAux->pProx;
+            if (pAux->getAnterior() != nullptr) {
+                pAux->setAnterior(pAux->getProximo());
             }
-            if (pAux->pProx != nullptr) {
-                pAux->pProx->pAnt = pAux->pAnt;
+            if (pAux->getProximo() != nullptr) {
+                pAux->setAnterior(pAux->getAnterior());
             }
             cont_alunos--;
             break;
         }
-        pAux = pAux->pProx;
+        pAux = pAux->getProximo();
     }
 }
 
@@ -69,31 +71,35 @@ void ListaAlunos::setNome(const char* n){
 }
 
 void ListaAlunos::listaAlunos(){
-    ElAluno* pAux = pElAlunoPrim;
-    while(pAux != nullptr){
-        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina " << nome << std::endl;
-        pAux = pAux->pProx;
+    Aluno* pAuxAluno = nullptr;
+    Elemento<Aluno> *pAuxEl = nullptr;
+    pAuxEl = pElAlunoPrim;
+
+    while(pAuxEl != nullptr){
+        pAuxAluno = pAuxEl->getInfo();
+        std::cout << "O aluno " << pAuxAluno->getNome() << " está matriculado na disciplina " << nome << std::endl;
+        pAuxEl = pAuxEl->getProximo();
     }
 }
 
 void ListaAlunos::listaAlunosInv(){
-    ElAluno* pAux = pElAlunoAtual;
+    Elemento<Aluno> *pAux = pElAlunoAtual;
     while(pAux != nullptr){
         std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina " << nome << std::endl;
-        pAux = pAux->pAnt;
+        pAux = pAux->getAnterior();
     }
 }
 
 void ListaAlunos::limpaLista(){
-    ElAluno* pAux;
+    Elemento<Aluno> *pAux;
     pAux = pElAlunoPrim;
     
     while(pElAlunoPrim != nullptr){
-        pElAlunoPrim = pElAlunoPrim->pProx;
+        pElAlunoPrim = pElAlunoPrim->getProximo();
         delete pAux;
         pAux = pElAlunoPrim;
     }
-    
+
     pElAlunoAtual = nullptr;
     pElAlunoPrim = nullptr;
 }
@@ -108,17 +114,17 @@ void ListaAlunos::gravarAlunos(){
         return;
     }
 
-    ElAluno* pAuxElAluno = nullptr;
+    Elemento<Aluno> *pAuxElAluno = nullptr;
     Aluno* pAuxAluno = nullptr;
     pAuxElAluno = pElAlunoPrim;
 
     while(pAuxElAluno != nullptr){
-        pAuxAluno = pAuxElAluno->getAluno();
+        pAuxAluno = pAuxElAluno->getInfo();
 
         GravadorAlunos << pAuxAluno->getID() << ' '
                         << pAuxAluno->getRA() << ' '
                         << pAuxAluno->getNome() << std::endl;
-        pAuxElAluno = pAuxElAluno->pProx;
+        pAuxElAluno = pAuxElAluno->getProximo();
     }
     GravadorAlunos.close();
 
