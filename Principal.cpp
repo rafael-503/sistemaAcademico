@@ -298,7 +298,9 @@ void Principal::cadAluno(){
     cout << "Aluno cadastrado com sucesso!" << endl;
 }
 
-void Principal::gravarTudo(){}
+void Principal::gravarTudo(){
+    LAlunos.gravarAlunos();
+}
 void Principal::gravarUniversidades(){}
 void Principal::gravarDepartamentos(){}
 void Principal::gravarDisciplinas(){}
