@@ -6,11 +6,13 @@ using std::cout;
 using std::endl;
 
 Principal::Principal():
- Einsten(), Newton(), Simao(),
- contIdAluno(0), contIdDepart(0), contIdDisc(0),
- Computacao1(contIdDisc++), Computacao2(contIdDisc++), Algoritmos(contIdDisc++), TecProg(contIdDisc++),
- AAA(contIdAluno++), BBB(contIdAluno++), CCC(contIdAluno++), DDD(contIdAluno++),
+ contIdAluno(0), contIdDepart(0), contIdDisc(0), 
+ Cambdrige(), Princeton(), UTFPR(),
  DAINF(contIdDepart++), FisicaPrinceton(contIdDepart++), MatematicaCambdrige(contIdDepart++),
+ Einsten(), Newton(), Simao(),
+ Algoritmos(contIdDisc++), Computacao1(contIdDisc++), Computacao2(contIdDisc++), TecProg(contIdDisc++),
+ AAA(contIdAluno++), BBB(contIdAluno++), CCC(contIdAluno++), DDD(contIdAluno++),
+ Fulano(),
  LUniversidades(1000, "Sistema Universidades"){
     // leitura da data atual
     time_t now = time(nullptr);
@@ -31,6 +33,7 @@ void Principal::inicializa(){
     inicializaEstagiarios();
     inicializaProfessores();
     inicializaUniversidades();
+    recuperarTudo();
 }
 
 void Principal::inicializaAlunos(){
@@ -38,24 +41,28 @@ void Principal::inicializaAlunos(){
     Aluno* ponteiroAluno = nullptr;
 
     AAA.setNome("AA");
+    AAA.setRA(0);
     LAlunos.incluiAluno(&AAA);
     ponteiroAluno = &AAA;
     ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
     LPessoas.incluiPessoa(ponteiroPessoa);
 
     BBB.setNome("BB");
+    BBB.setRA(1);
     LAlunos.incluiAluno(&BBB);
     ponteiroAluno = &BBB;
     ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
     LPessoas.incluiPessoa(ponteiroPessoa);
 
     CCC.setNome("CC");
+    CCC.setRA(2);
     LAlunos.incluiAluno(&CCC);
     ponteiroAluno = &CCC;
     ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
     LPessoas.incluiPessoa(ponteiroPessoa);
 
     DDD.setNome("DD");
+    DDD.setRA(3);
     LAlunos.incluiAluno(&DDD);
     ponteiroAluno = &DDD;
     ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
@@ -104,6 +111,7 @@ void Principal::inicializaEstagiarios(){
     Estagiario* ponteiroEstagiario = nullptr;
 
     Fulano.setNome("Fulano");
+    Fulano.setRA(4);
     Fulano.setBolsaEstagio(500);
 
     ponteiroEstagiario = &Fulano;
@@ -300,7 +308,9 @@ void Principal::gravarAlunos(){
 }
 
 void Principal::gravarProfessores(){}
-void Principal::recuperarTudo(){}
+void Principal::recuperarTudo(){
+    recuperarAlunos();
+}
 void Principal::recuperarUniversidades(){}
 void Principal::recuperarDepartamentos(){}
 void Principal::recuperarDisciplinas(){}
