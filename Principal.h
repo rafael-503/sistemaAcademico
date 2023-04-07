@@ -40,6 +40,7 @@ class Principal{
         Lista<Departamento> LDepartamentos;
         Lista<Disciplina> LDisciplinas;
         Lista<Aluno> LAlunos;
+        Lista<Pessoa> LPessoas;
 
         int diaAtual;
         int mesAtual;

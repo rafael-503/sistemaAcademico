@@ -57,6 +57,9 @@ void Principal::inicializaDepartamentos(){
 }
 
 void Principal::inicializaProfessores(){
+    Pessoa* ponteiroPessoa;
+    Professor* ponteiroProfessor;
+
     // inicializacao dos professores
     Einsten.inicializa(14, 3, 1879, "Albert Einstein");
     Newton.inicializa(4, 1, 1643, "Isaac Newton");
@@ -71,6 +74,18 @@ void Principal::inicializaProfessores(){
     Einsten.setDptoFiliado(&FisicaPrinceton);
     Newton.setDptoFiliado(&MatematicaCambdrige);
     Simao.setDptoFiliado(&DAINF);
+
+    ponteiroProfessor = &Einsten;
+    ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+
+    ponteiroProfessor = &Newton;
+    ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+
+    ponteiroProfessor = &Simao;
+    ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
 }
 
 void Principal::inicializaDisciplinas(){
@@ -103,17 +118,32 @@ void Principal::inicializaDisciplinas(){
 }
 
 void Principal::inicializaAlunos(){
+    Pessoa* ponteiroPessoa = nullptr;
+    Aluno* ponteiroAluno = nullptr;
+
     AAA.setNome("AA");
     LAlunos.incluiInfo(&AAA, AAA.getNome());
+    ponteiroAluno = &AAA;
+    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
 
     BBB.setNome("BB");
     LAlunos.incluiInfo(&BBB, BBB.getNome());
+    ponteiroAluno = &BBB;
+    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
 
     CCC.setNome("CC");
     LAlunos.incluiInfo(&CCC, CCC.getNome());
+    ponteiroAluno = &CCC;
+    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
 
     DDD.setNome("DD");
     LAlunos.incluiInfo(&DDD, DDD.getNome());
+    ponteiroAluno = &DDD;
+    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
 }
 
 void Principal::calcIdadeProf(){
@@ -203,7 +233,9 @@ void Principal::cadUniversidade(){
 void Principal::cadAluno(){
     char nomeAluno[100];
     int ra;
-    Aluno* pAluno = nullptr;
+    Aluno* ponteiroAluno = nullptr;
+    Pessoa* ponteiroPessoa = nullptr;
+
 
     cout << "Informe o nome do aluno: " << endl;
     cin >> nomeAluno;
@@ -211,11 +243,15 @@ void Principal::cadAluno(){
     cout << "Informe o RA do aluno: " << endl;
     cin >> ra;
 
-    pAluno = new Aluno(contIdAluno++);
+    ponteiroAluno = new Aluno(contIdAluno++);
 
-    pAluno->setNome(nomeAluno);
-    pAluno->setRA(ra);
-    LAlunos.incluiInfo(pAluno);
+    ponteiroAluno->setNome(nomeAluno);
+    ponteiroAluno->setRA(ra);
+
+    LAlunos.incluiInfo(ponteiroAluno);
+    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+
 
     cout << "Aluno cadastrado com sucesso!" << endl;
 }
@@ -310,18 +346,20 @@ void Principal::menuCad(){
 
 void Principal::menuExe(){
     int op= -1;
-    while(op!= 5){
+    while(op!= 7){
         system("clear");
         cout << "Informe a opção desejada: " << endl;
         cout << "1 - Listar Disciplinas" << endl;
         cout << "2 - Listar Departamentos" << endl;
         cout << "3 - Listar Universidades" << endl;
         cout << "4 - Listar Alunos" << endl;
-        cout << "5 - Sair" << endl;
+        cout << "5 - Listar Professores" << endl;
+        cout << "6 - Listar Pessoas" << endl;
+        cout << "7 - Sair" << endl;
         cin >> op;
 
         switch (op){
-        case 1:{LDisciplinas.listaDisciplinas();
+        case 1:{LDisciplinas.listaInfos();
                 getchar();
                 getchar();}
             break;
@@ -333,11 +371,17 @@ void Principal::menuExe(){
                 getchar();
                 getchar();}
             break;
-        case 4:{LAlunos.lista();
+        case 4:{LAlunos.listaInfos();
+                getchar();
+                getchar();}
+        case 5:{dptoOndeProfsTrabalham.listaInfos();
+                getchar();
+                getchar();}
+        case 6:{LPessoas.listaInfos();
                 getchar();
                 getchar();}
             break;
-        case 5: {cout << "Saindo..." << endl;}
+        case 7: {cout << "Saindo..." << endl;}
             break;
         default:{cout << "Opção inválida!" << endl;
                 getchar();
