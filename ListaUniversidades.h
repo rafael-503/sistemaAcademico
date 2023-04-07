@@ -17,4 +17,7 @@ public:
     void listaUniversidades();
     void listaUniversidadesInv();
     Universidade* localizar(const char* n);
+
+    void gravarUniversidades();
+    void recuperarUniversidades();
 };
