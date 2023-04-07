@@ -17,6 +17,7 @@ class Lista{
 
         bool incluiElemento(Elemento<TIPO>* pElemento);
         bool incluiInfo(TIPO* pInfo, const char* nome="");
+        void listaInfos();
 
         TIPO* localizar(char *n);
         Elemento<TIPO>* getPrimeiro();	
@@ -85,6 +86,21 @@ bool Lista<TIPO>::incluiInfo(TIPO* pInfo, const char* nome){
     else{
         std::cout << "Erro elemento nulo na lista" << std::endl;
         return false;
+    }
+}
+
+template<class TIPO>
+void Lista<TIPO>::listaInfos(){
+    Elemento<TIPO>* paux;
+    paux = pPrimeiro;
+
+    if (NULL != pPrimeiro)
+    {
+         while (NULL != paux)
+         {
+              printf ( "Elemento na lista %s \n", paux->getNome() );
+              paux = paux->getProximo();
+         }
     }
 }
 

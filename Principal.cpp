@@ -57,13 +57,13 @@ void Principal::inicializaDepartamentos(){
 }
 
 void Principal::inicializaProfessores(){
-    Pessoa* ponteiroPessoa;
-    Professor* ponteiroProfessor;
+    Pessoa* ponteiroPessoa = nullptr;
+    Professor* ponteiroProfessor = nullptr;
 
     // inicializacao dos professores
-    Einsten.inicializa(14, 3, 1879, "Albert Einstein");
-    Newton.inicializa(4, 1, 1643, "Isaac Newton");
-    Simao.inicializa(3, 10, 1976, "Jean Simao");
+    Einsten.Inicializa(14, 3, 1879, "Albert Einstein");
+    Newton.Inicializa(4, 1, 1643, "Isaac Newton");
+    Simao.Inicializa(3, 10, 1976, "Jean Simao");
 
     // associacao dos professores com as universidades
     Einsten.setUnivFiliado(&Princeton);
@@ -74,6 +74,11 @@ void Principal::inicializaProfessores(){
     Einsten.setDptoFiliado(&FisicaPrinceton);
     Newton.setDptoFiliado(&MatematicaCambdrige);
     Simao.setDptoFiliado(&DAINF);
+
+    Einsten.setSalario(20000);
+    Newton.setSalario(20000);
+    Simao.setSalario(10000);
+    Simao.setBolsaProjeto(1800);
 
     ponteiroProfessor = &Einsten;
     ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
@@ -144,6 +149,23 @@ void Principal::inicializaAlunos(){
     ponteiroAluno = &DDD;
     ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
     LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+}
+
+void Principal::inicializaEstagiarios(){
+    Pessoa* ponteiroPessoa = nullptr;
+    Aluno* ponteiroAluno = nullptr;
+    Estagiario* ponteiroEstagiario = nullptr;
+
+    Fulano.setNome("Fulano");
+    Fulano.setBolsaEstagio(500);
+
+    ponteiroEstagiario = &Fulano;
+    ponteiroAluno = static_cast <Aluno*> (ponteiroEstagiario);
+    LAlunos.incluiInfo(ponteiroAluno, ponteiroAluno->getNome());
+
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroEstagiario);
+    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+
 }
 
 void Principal::calcIdadeProf(){
@@ -374,7 +396,7 @@ void Principal::menuExe(){
         case 4:{LAlunos.listaInfos();
                 getchar();
                 getchar();}
-        case 5:{dptoOndeProfsTrabalham.listaInfos();
+        case 5:{LPessoas.listaInfos();
                 getchar();
                 getchar();}
         case 6:{LPessoas.listaInfos();

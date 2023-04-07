@@ -1,12 +1,11 @@
 #pragma once
 #include "Lista.h"
-#include "ListaAlunos.h"
 #include "Professor.h"
-#include "ListaUniversidades.h"
-#include "ListaDepartamentos.h"
-#include "ListaDisciplinas.h"
-#include "ListaAlunos.h"
+#include "Universidade.h"
+#include "Departamento.h"
+#include "Disciplina.h"
 #include "Aluno.h"
+#include "Estagiario.h"
 
 class Principal{
     private:
@@ -35,6 +34,8 @@ class Principal{
         Aluno BBB;
         Aluno CCC;
         Aluno DDD;
+
+        Estagiario Fulano;
         
         Lista<Universidade> LUniversidades;
         Lista<Departamento> LDepartamentos;
@@ -56,6 +57,7 @@ class Principal{
         void inicializaProfessores();
         void inicializaDisciplinas();
         void inicializaAlunos();
+        void inicializaEstagiarios();
 
         void calcIdadeProf();
         void univOndeProfsTrabalham();

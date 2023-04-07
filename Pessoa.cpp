@@ -3,17 +3,17 @@
 #include <cstring>
 
 Pessoa::Pessoa(int i){
-    inicializa(0, 0, 0);
+    Inicializa(0, 0, 0);
     id = i;
 }
 
 Pessoa::~Pessoa(){}
 
 Pessoa::Pessoa(int diaNA, int mesNA, int anoNA, const char* nome){
-    inicializa(diaNA, mesNA, anoNA, nome);
+    Inicializa(diaNA, mesNA, anoNA, nome);
 }
 
-void Pessoa::inicializa(int diaNA, int mesNA, int anoNA, const char* nome){
+void Pessoa::Inicializa(int diaNA, int mesNA, int anoNA, const char* nome){
     diaP = diaNA;
     mesP = mesNA;
     anoP = anoNA;
