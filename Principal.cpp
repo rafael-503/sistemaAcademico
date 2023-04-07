@@ -6,14 +6,14 @@ using std::cout;
 using std::endl;
 
 Principal::Principal():
- contIdAluno(0), contIdDepart(0), contIdDisc(0), 
- Cambdrige(), Princeton(), UTFPR(),
+ contIdAluno(0), contIdDepart(0), contIdDisc(0), contIdUniv(0),
+ Cambdrige(contIdUniv++), Princeton(contIdUniv++), UTFPR(contIdUniv++),
  DAINF(contIdDepart++), FisicaPrinceton(contIdDepart++), MatematicaCambdrige(contIdDepart++),
  Einsten(), Newton(), Simao(),
  Algoritmos(contIdDisc++), Computacao1(contIdDisc++), Computacao2(contIdDisc++), TecProg(contIdDisc++),
  AAA(contIdAluno++), BBB(contIdAluno++), CCC(contIdAluno++), DDD(contIdAluno++),
  Fulano(),
- LUniversidades(1000, "Sistema Universidades"){
+ LUniversidades(1000, ""){
     // leitura da data atual
     time_t now = time(nullptr);
     tm *local = localtime(&now);
@@ -268,7 +268,7 @@ void Principal::cadUniversidade(){
     cout << "Informe o nome da universidade: ";
     cin >> nomeUniversidade;
 
-    pUniv = new Universidade();
+    pUniv = new Universidade(contIdUniv++);
     pUniv->setNome(nomeUniversidade);
     LUniversidades.incluiUniversidade(pUniv);
 
@@ -299,7 +299,9 @@ void Principal::cadAluno(){
 }
 
 void Principal::gravarTudo(){}
-void Principal::gravarUniversidades(){}
+void Principal::gravarUniversidades(){
+    LUniversidades.gravarUniversidades();
+}
 void Principal::gravarDepartamentos(){}
 void Principal::gravarDisciplinas(){}
 

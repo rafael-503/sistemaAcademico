@@ -3,7 +3,9 @@
 #include <cstring>
 
 
-Universidade::Universidade(): objDepartamentos(){}
+Universidade::Universidade(int i): objDepartamentos(){
+    id = i;
+}
 
 Universidade::~Universidade(){}
 
@@ -14,6 +16,10 @@ void Universidade::setNome(const char* n){
 
 char* Universidade::getNome(){
     return nome;
+}
+
+int Universidade::getID(){
+    return id;
 }
 
 void Universidade::incluiDepartamento(Departamento* pdep){

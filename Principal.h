@@ -14,6 +14,7 @@ class Principal{
         int contIdAluno;
         int contIdDepart;
         int contIdDisc;
+        int contIdUniv;
 
         Universidade Cambdrige;
         Universidade Princeton;
