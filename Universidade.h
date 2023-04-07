@@ -1,10 +1,11 @@
 #pragma once
-#include "ListaDepartamentos.h"
+#include "Lista.h"
+#include "Departamento.h"
 
 class Universidade{
     private:
         char nome[100];
-        ListaDepartamentos objDepartamentos;
+        Lista<Departamento> objDepartamentos;
         int i;
     
     public:

@@ -1,7 +1,7 @@
 #include "Departamento.h"
 #include "Universidade.h"
 #include "Disciplina.h"
-#include "ListaDisciplinas.h"
+#include "Lista.h"
 #include <cstring>
 #include <iostream>
 

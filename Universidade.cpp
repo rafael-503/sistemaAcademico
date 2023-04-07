@@ -17,13 +17,13 @@ char* Universidade::getNome(){
 
 
 void Universidade::setDepartamento(Departamento* pdep){
-    objDepartamentos.setDepartamento(pdep);
+    objDepartamentos.incluiInfo(pdep);
 }
 
 void Universidade::listaDepartamentos(){
-    objDepartamentos.listaDepartamentos();
+    objDepartamentos.listaInfos();
 }
 
 void Universidade::listaDepartamentosInv(){
-    objDepartamentos.listaDepartamentosInv();
+    //objDepartamentos.listaDepartamentosInv();
 }

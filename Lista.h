@@ -12,9 +12,12 @@ class Lista{
         Lista();
         ~Lista();
         void inicializa();
-        bool incluiElemento(Elemento<TIPO> *pElemento);
-        void incluiInfo(TIPO* pInfo, char* nome="");
-        bool listaInfos();
+        bool incluiElemento(Elemento<TIPO>* pElemento);
+        bool incluiInfo(TIPO* pInfo, const char* nome="");
+        void listaInfos();
+        TIPO* localizar(char *n);
+        Elemento<TIPO>* getPrimeiro();	
+	    Elemento<TIPO>* getAtual();
 };
 
 template <class TIPO>
@@ -53,7 +56,7 @@ bool Lista<TIPO>::incluiElemento(Elemento<TIPO> *pElemento){
 }
 
 template <class TIPO>
-void incluiInfo(TIPO* pInfo, char* nome=""){
+bool Lista<TIPO>::incluiInfo(TIPO* pInfo, const char* nome){
     if(pInfo != nullptr){
         Elemento<TIPO> *pElemento;
         pElemento = new Elemento<TIPO>();
@@ -69,7 +72,7 @@ void incluiInfo(TIPO* pInfo, char* nome=""){
 }
 
 template <class TIPO>
-bool Lista<TIPO>::listaInfos(){
+void Lista<TIPO>::listaInfos(){
     Elemento<TIPO> *pAux;
     pAux = pPrimeiro;
 
@@ -79,4 +82,27 @@ bool Lista<TIPO>::listaInfos(){
             pAux = pAux->getProximo();
         }
     }
+}
+
+template <class TIPO>
+TIPO* Lista<TIPO>::localizar(char *n){
+    Elemento<TIPO> *pAux = nullptr;
+    pAux = pPrimeiro;
+    while(pAux != nullptr){
+        if(strcmp(pAux->getNome(), n) == 0){
+            return pAux->getInfo();
+        }
+        pAux = pAux->getProximo();
+    }
+    return nullptr;
+}
+
+template <class TIPO>
+Elemento<TIPO>* Lista<TIPO>::getPrimeiro(){
+    return pPrimeiro;
+}
+
+template <class TIPO>
+Elemento<TIPO>* Lista<TIPO>::getAtual(){
+    return pAtual;
 }

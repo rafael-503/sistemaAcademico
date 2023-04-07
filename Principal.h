@@ -1,8 +1,9 @@
 #pragma once
+#include "Lista.h"
 #include "Professor.h"
-#include "ListaUniversidades.h"
-#include "ListaDepartamentos.h"
-#include "ListaDisciplinas.h"
+#include "Universidade.h"
+#include "Departamento.h"
+#include "Disciplina.h"
 #include "Aluno.h"
 
 class Principal{
@@ -33,10 +34,10 @@ class Principal{
         Aluno CCC;
         Aluno DDD;
         
-        ListaUniversidades LUniversidades;
-        ListaDepartamentos LDepartamentos;
-        ListaDisciplinas LDisciplinas;
-        ListaAlunos LAlunos;
+        Lista<Universidade> LUniversidades;
+        Lista<Departamento> LDepartamentos;
+        Lista<Disciplina> LDisciplinas;
+        Lista<Aluno> LAlunos;
 
         int diaAtual;
         int mesAtual;

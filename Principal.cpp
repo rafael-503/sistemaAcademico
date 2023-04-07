@@ -33,13 +33,13 @@ void Principal::inicializa(){
 
 void Principal::inicializaUniversidades(){
     UTFPR.setNome("UTFPR");
-    LUniversidades.incluiUniversidade(&UTFPR);
+    LUniversidades.incluiInfo(&UTFPR, UTFPR.getNome());
 
     Princeton.setNome("Princeton University");
-    LUniversidades.incluiUniversidade(&Princeton);
+    LUniversidades.incluiInfo(&Princeton, Princeton.getNome());
 
     Cambdrige.setNome("Cambdrige University");
-    LUniversidades.incluiUniversidade(&Cambdrige);
+    LUniversidades.incluiInfo(&Cambdrige, Cambdrige.getNome());
 }
 
 void Principal::inicializaDepartamentos(){
@@ -47,9 +47,9 @@ void Principal::inicializaDepartamentos(){
     FisicaPrinceton.setNome("Fisica Princeton");
     MatematicaCambdrige.setNome("Matematica Cambdrige");
 
-    LDepartamentos.incluiDepartamento(&DAINF);
-    LDepartamentos.incluiDepartamento(&FisicaPrinceton);
-    LDepartamentos.incluiDepartamento(&MatematicaCambdrige);
+    LDepartamentos.incluiInfo(&DAINF, DAINF.getNome());
+    LDepartamentos.incluiInfo(&FisicaPrinceton, FisicaPrinceton.getNome());
+    LDepartamentos.incluiInfo(&MatematicaCambdrige, MatematicaCambdrige.getNome());
 
     UTFPR.setDepartamento(&DAINF);
     Princeton.setDepartamento(&FisicaPrinceton);
@@ -75,16 +75,16 @@ void Principal::inicializaProfessores(){
 
 void Principal::inicializaDisciplinas(){
     Computacao1.setNome("Computacao 1");
-    LDisciplinas.incluiDisciplina(&Computacao1);
+    LDisciplinas.incluiInfo(&Computacao1, Computacao1.getNome());
 
     Computacao2.setNome("Computacao 2");
-    LDisciplinas.incluiDisciplina(&Computacao2);
+    LDisciplinas.incluiInfo(&Computacao2, Computacao2.getNome());
 
     Algoritmos.setNome("Algoritmos");
-    LDisciplinas.incluiDisciplina(&Algoritmos);
+    LDisciplinas.incluiInfo(&Algoritmos, Algoritmos.getNome());
 
     TecProg.setNome("Tecnicas de Programacao");
-    LDisciplinas.incluiDisciplina(&TecProg);
+    LDisciplinas.incluiInfo(&TecProg, TecProg.getNome());
 
     Computacao1.setDepartamento(&DAINF);
     Computacao2.setDepartamento(&DAINF);
@@ -104,17 +104,16 @@ void Principal::inicializaDisciplinas(){
 
 void Principal::inicializaAlunos(){
     AAA.setNome("AA");
-    LAlunos.incluiAluno(&AAA);
+    LAlunos.incluiInfo(&AAA, AAA.getNome());
 
     BBB.setNome("BB");
-    LAlunos.incluiAluno(&BBB);
+    LAlunos.incluiInfo(&BBB, BBB.getNome());
 
     CCC.setNome("CC");
-    LAlunos.incluiAluno(&CCC);
+    LAlunos.incluiInfo(&CCC, CCC.getNome());
 
     DDD.setNome("DD");
-    LAlunos.incluiAluno(&DDD);
-
+    LAlunos.incluiInfo(&DDD, DDD.getNome());
 }
 
 void Principal::calcIdadeProf(){
@@ -179,7 +178,7 @@ void Principal::cadDepartamento(){
         pDepart = new Departamento();
         pDepart->setNome(nomeDepartamento);
         pDepart->setUniversidade(pUniv);
-        LDepartamentos.incluiDepartamento(pDepart);
+        LDepartamentos.incluiInfo(pDepart);
         pUniv->setDepartamento(pDepart);
     }
     else{
@@ -196,7 +195,7 @@ void Principal::cadUniversidade(){
 
     pUniv = new Universidade();
     pUniv->setNome(nomeUniversidade);
-    LUniversidades.incluiUniversidade(pUniv);
+    LUniversidades.incluiInfo(pUniv);
 
     cout << "Universidade cadastrada com sucesso!" << endl;
 }
@@ -216,7 +215,7 @@ void Principal::cadAluno(){
 
     pAluno->setNome(nomeAluno);
     pAluno->setRA(ra);
-    LAlunos.incluiAluno(pAluno);
+    LAlunos.incluiInfo(pAluno);
 
     cout << "Aluno cadastrado com sucesso!" << endl;
 }
@@ -227,7 +226,7 @@ void Principal::gravarDepartamentos(){}
 void Principal::gravarDisciplinas(){}
 
 void Principal::gravarAlunos(){
-    LAlunos.gravarAlunos();
+    //LAlunos.gravarAlunos();
 }
 
 void Principal::gravarProfessores(){}
@@ -237,7 +236,7 @@ void Principal::recuperarDepartamentos(){}
 void Principal::recuperarDisciplinas(){}
 
 void Principal::recuperarAlunos(){
-    LAlunos.recuperarAlunos();
+    //LAlunos.recuperarAlunos();
 }
 void Principal::recuperarProfessores(){}
 
@@ -322,19 +321,19 @@ void Principal::menuExe(){
         cin >> op;
 
         switch (op){
-        case 1:{LDisciplinas.listaDisciplinas();
+        case 1:{LDisciplinas.listaInfos();
                 getchar();
                 getchar();}
             break;
-        case 2:{LDepartamentos.listaDepartamentos();
+        case 2:{LDepartamentos.listaInfos();
                 getchar();
                 getchar();}
             break;
-        case 3:{LUniversidades.listaUniversidades();
+        case 3:{LUniversidades.listaInfos();
                 getchar();
                 getchar();}
             break;
-        case 4:{LAlunos.listaAlunos();
+        case 4:{LAlunos.listaInfos();
                 getchar();
                 getchar();}
             break;

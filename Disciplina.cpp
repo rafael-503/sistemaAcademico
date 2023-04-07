@@ -2,20 +2,16 @@
 #include <cstring>
 #include <iostream>
 
-Disciplina::Disciplina(int na, const char* ac): ObjAlunos(na, ac){
-    id = -1;
+Disciplina::Disciplina(int i, int na, const char* ac): ObjLAlunos(){
+    id = i;
     std::strcpy(area_conhecimento, ac);
     pDptoAssociado = nullptr;
-    pProx = nullptr;
-    pAnt = nullptr;
     cont_alunos = 0;
     numero_alunos = na;
 }
 
 Disciplina::~Disciplina(){
     pDptoAssociado = nullptr;
-    pProx = nullptr;
-    pAnt = nullptr;
 }
 
 void Disciplina::setId(int i){
@@ -28,7 +24,6 @@ int Disciplina::getId(){
 
 void Disciplina::setNome(const char* n){
     std::strcpy(nome, n);
-    ObjAlunos.setNome(n);
 }
 
 char* Disciplina::getNome(){
@@ -45,17 +40,27 @@ Departamento* Disciplina::getDepartamento(){
 }
 
 void Disciplina::incluiAluno(Aluno* pa){
-    ObjAlunos.incluiAluno(pa);
+    ObjLAlunos.incluiInfo(pa);
 }
 
 void Disciplina::excluiAluno(Aluno* pa) {
-    ObjAlunos.excluiAluno(pa);
+    //ObjLAlunos.excluiInfo(pa);
 }
 
 void Disciplina::listaAlunos(){
-    ObjAlunos.listaAlunos();
+    ObjLAlunos.listaInfos();
+    Elemento<Aluno>* pAux = nullptr;
+    pAux = ObjLAlunos.getPrimeiro();
+
+    if(pAux != nullptr){
+        Aluno* pAluno = nullptr;
+        pAluno = pAux->getInfo();
+
+        std::cout << "Aluno: " << pAluno->getNome() << " com RA: " << pAluno->getRA() << std::endl;
+        pAux = pAux->getProximo();
+    }
 }
 
 void Disciplina::listaAlunosInv(){
-    ObjAlunos.listaAlunosInv();
+    //ObjLAlunos.listaAlunosInv();
 }
