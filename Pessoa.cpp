@@ -62,3 +62,7 @@ void Pessoa::setNome(const char* n){
 char* Pessoa::getNome(){
     return nomeP;
 }
+
+void Pessoa::informaRenda(){
+    std::cout << "Nenhuma informação sobre a renda de " << nomeP << std::endl;
+}

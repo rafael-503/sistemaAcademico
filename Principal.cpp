@@ -200,6 +200,18 @@ void Principal::listaAlunosDisc(){
     //Algoritmos.listaAlunosInv(); lista inversa
 }
 
+void Principal::listaRendaPessoas(){
+    Elemento<Pessoa>* ponteiroElementoP = nullptr;
+    Pessoa* ponteiroPessoa = nullptr;
+
+    ponteiroElementoP = LPessoas.getPrimeiro();
+    while(ponteiroElementoP != nullptr){
+        ponteiroPessoa = ponteiroElementoP->getInfo();
+        ponteiroPessoa->informaRenda();
+        ponteiroElementoP = ponteiroElementoP->getProximo();
+    }
+}
+
 void Principal::executar(){
     //calcIdadeProf();
     //univOndeProfsTrabalham();
@@ -368,7 +380,7 @@ void Principal::menuCad(){
 
 void Principal::menuExe(){
     int op= -1;
-    while(op!= 7){
+    while(op!= 8){
         system("clear");
         cout << "Informe a opção desejada: " << endl;
         cout << "1 - Listar Disciplinas" << endl;
@@ -377,7 +389,8 @@ void Principal::menuExe(){
         cout << "4 - Listar Alunos" << endl;
         cout << "5 - Listar Professores" << endl;
         cout << "6 - Listar Pessoas" << endl;
-        cout << "7 - Sair" << endl;
+        cout << "7 - Listar Renda Pessoas" << endl;
+        cout << "8 - Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -402,8 +415,11 @@ void Principal::menuExe(){
         case 6:{LPessoas.listaInfos();
                 getchar();
                 getchar();}
+        case 7:{listaRendaPessoas();
+                getchar();
+                getchar();}
             break;
-        case 7: {cout << "Saindo..." << endl;}
+        case 8: {cout << "Saindo..." << endl;}
             break;
         default:{cout << "Opção inválida!" << endl;
                 getchar();

@@ -64,6 +64,7 @@ class Principal{
         void dptoOndeProfsTrabalham();
         void listaDiscDeptos();
         void listaAlunosDisc();
+        void listaRendaPessoas();
         void executar();
 
         void cadDisciplina();

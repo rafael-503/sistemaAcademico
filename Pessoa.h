@@ -24,4 +24,5 @@ class Pessoa{
         int getID();
         void setNome(const char* n);
         char* getNome();
+        virtual void informaRenda();
 };
