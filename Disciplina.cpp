@@ -40,7 +40,16 @@ Departamento* Disciplina::getDepartamento(){
 }
 
 void Disciplina::incluiAluno(Aluno* pa){
-    ObjLAlunos.incluiInfo(pa);
+    if(pa != nullptr){
+        if(cont_alunos < numero_alunos){
+            ObjLAlunos.incluiAluno(pa);
+            cont_alunos++;
+        }
+        else
+            std::cout << "Numero maximo de alunos atingido. Turma com " << numero_alunos << std::endl;
+    }
+    else
+        std::cout << "Ponteiro aluno nulo." << std::endl;
 }
 
 void Disciplina::excluiAluno(Aluno* pa) {
@@ -48,19 +57,11 @@ void Disciplina::excluiAluno(Aluno* pa) {
 }
 
 void Disciplina::listaAlunos(){
-    ObjLAlunos.listaInfos();
-    Elemento<Aluno>* pAux = nullptr;
-    pAux = ObjLAlunos.getPrimeiro();
-
-    if(pAux != nullptr){
-        Aluno* pAluno = nullptr;
-        pAluno = pAux->getInfo();
-
-        std::cout << "Aluno: " << pAluno->getNome() << " com RA: " << pAluno->getRA() << std::endl;
-        pAux = pAux->getProximo();
-    }
+    std::cout << "Alunos matriculados na disciplina " << nome << std::endl;
+    ObjLAlunos.listaAlunos();
 }
 
 void Disciplina::listaAlunosInv(){
-    //ObjLAlunos.listaAlunosInv();
+    std::cout << "Alunos matriculados na disciplina " << nome << std::endl;
+    ObjLAlunos.listaAlunosInv();
 }

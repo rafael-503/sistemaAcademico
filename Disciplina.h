@@ -1,5 +1,5 @@
 #pragma once
-#include "Lista.h"
+#include "ListaAlunos.h"
 #include "Departamento.h"
 #include "Aluno.h"
 
@@ -11,7 +11,7 @@ class Disciplina{
         int numero_alunos;
         int cont_alunos;
         Departamento* pDptoAssociado;
-        Lista<Aluno> ObjLAlunos;
+        ListaAlunos ObjLAlunos;
         
     public:
         Disciplina(int i, int na=45, const char* ac="");
