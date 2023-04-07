@@ -1,9 +1,11 @@
 #pragma once
 #include "Lista.h"
+#include "ListaAlunos.h"
 #include "Professor.h"
-#include "Universidade.h"
-#include "Departamento.h"
-#include "Disciplina.h"
+#include "ListaUniversidades.h"
+#include "ListaDepartamentos.h"
+#include "ListaDisciplinas.h"
+#include "ListaAlunos.h"
 #include "Aluno.h"
 
 class Principal{

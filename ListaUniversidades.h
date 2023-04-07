@@ -1,5 +1,5 @@
 #pragma once
-#include "ElUniversidade.h"
+#include "Elemento.h"
 #include "Universidade.h"
 
 class ListaUniversidades{
@@ -7,8 +7,8 @@ private:
     int cont_univ;
     int numero_univ;
     char nome[100];
-    ElUniversidade* pElUniversidadePrim;
-    ElUniversidade* pElUniversidadeAtual;
+    Elemento<Universidade>* pElUniversidadePrim;
+    Elemento<Universidade>* pElUniversidadeAtual;
 
 public:
     ListaUniversidades(int nu=1000, const char* n="");

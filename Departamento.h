@@ -5,16 +5,16 @@ class ListaDisciplinas;
 
 class Departamento{
     private:
+        int id;
         char nome[100];
         Universidade* pUniv;
-        Disciplina* pDisciplPrim;
-        Disciplina* pDisciplAtual;
         ListaDisciplinas* objDisciplinas;
-        int id;
 
     public:
         Departamento(int i=-1);
         ~Departamento();
+
+        int getId();
 
         void setNome(const char* n);
         char* getNome();

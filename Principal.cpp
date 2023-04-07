@@ -321,7 +321,7 @@ void Principal::menuExe(){
         cin >> op;
 
         switch (op){
-        case 1:{LDisciplinas.listaInfos();
+        case 1:{LDisciplinas.listaDisciplinas();
                 getchar();
                 getchar();}
             break;
@@ -333,7 +333,7 @@ void Principal::menuExe(){
                 getchar();
                 getchar();}
             break;
-        case 4:{LAlunos.listaInfos();
+        case 4:{LAlunos.lista();
                 getchar();
                 getchar();}
             break;

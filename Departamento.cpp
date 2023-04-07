@@ -1,22 +1,21 @@
 #include "Departamento.h"
 #include "Universidade.h"
 #include "Disciplina.h"
-#include "Lista.h"
+#include "ListaDisciplinas.h"
 #include <cstring>
 #include <iostream>
 
 Departamento::Departamento(int i): id(i){
-    pDisciplPrim = nullptr;
-    pDisciplAtual = nullptr;
     objDisciplinas = new ListaDisciplinas();
 }
 
 Departamento::~Departamento(){
-    pDisciplPrim = nullptr;
-    pDisciplAtual = nullptr;
-
     if(objDisciplinas != nullptr)
         delete objDisciplinas;
+}
+
+int Departamento::getId(){
+    return id;
 }
 
 void Departamento::setNome(const char* n){

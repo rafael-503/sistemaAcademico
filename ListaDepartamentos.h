@@ -1,5 +1,5 @@
 #pragma once
-#include "ElDepartamento.h"
+#include "Elemento.h"
 #include "Departamento.h"
 
 class ListaDepartamentos{
@@ -8,8 +8,8 @@ class ListaDepartamentos{
         int numero_dep;
         char nome[100];
 
-        ElDepartamento* pElDepartamentoPrim;
-        ElDepartamento* pElDepartamentoAtual;
+        Elemento<Departamento>* pElDepartamentoPrim;
+        Elemento<Departamento>* pElDepartamentoAtual;
     
     public:
         ListaDepartamentos(int nd=1000, const char* n="");
