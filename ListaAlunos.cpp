@@ -3,107 +3,51 @@
 #include <iostream>
 #include <fstream>
 
-ListaAlunos::ListaAlunos(int na, const char* n){
-    cont_alunos = 0;
-    numero_alunos = na;
-    std::strcpy(nome, n);
-    
-    pElAlunoPrim = nullptr;
-    pElAlunoAtual = nullptr;
+ListaAlunos::ListaAlunos(){
 }
 
 ListaAlunos::~ListaAlunos(){
     limpaLista();
 }
 
+void ListaAlunos::limpaLista(){
+    LTAlunos.limpar();
+}
+
 void ListaAlunos::incluiAluno(Aluno* pa){
-    if((cont_alunos < numero_alunos) && (pa != nullptr)){
-        Elemento<Aluno> *pAux = nullptr;
-        pAux = new Elemento<Aluno>();
-        pAux->setInfo(pa);
-        
-        if(pElAlunoPrim == nullptr){
-            pElAlunoPrim = pAux;
-            pElAlunoAtual = pAux;
-        }
-        else{
-            pElAlunoAtual->setProximo(pAux);
-            pAux->setAnterior(pElAlunoAtual);
-            pElAlunoAtual = pAux;
-        }
-        cont_alunos++;
-    }
-    else{
-        if(pa != nullptr)
-            std::cout << "Aluno nao incluido, turma lotada" << std::endl;
-        else
-            std::cout << "Ponteiro nulo" << std::endl;
-    }
+    if(pa != nullptr)
+        LTAlunos.incluiInfo(pa);
+    else
+        std::cout << "Erro: Aluno nao incluido" << std::endl;
 }
 
 void ListaAlunos::excluiAluno(Aluno* pa) {
-    Elemento<Aluno> *pAux = pElAlunoPrim;
-
-    while (pAux != nullptr) {
-        if (pAux->getInfo() == pa) {
-            if (pAux == pElAlunoPrim) {
-                
-                pElAlunoPrim = pAux->getProximo();
-            }
-            if (pAux == pElAlunoAtual) {
-                pElAlunoAtual = pAux->getAnterior();
-            }
-            if (pAux->getAnterior() != nullptr) {
-                pAux->setAnterior(pAux->getProximo());
-            }
-            if (pAux->getProximo() != nullptr) {
-                pAux->setAnterior(pAux->getAnterior());
-            }
-            cont_alunos--;
-            break;
-        }
-        pAux = pAux->getProximo();
-    }
-}
-
-void ListaAlunos::setNome(const char* n){
-    std::strcpy(nome, n);
+    //LTAlunos.excluiInfo(pa);
 }
 
 void ListaAlunos::listaAlunos(){
-    Aluno* pAuxAluno = nullptr;
-    Elemento<Aluno> *pAuxEl = nullptr;
-    pAuxEl = pElAlunoPrim;
+    Elemento<Aluno>* pElAux = nullptr;
+    Aluno* pAlAux = nullptr;
+    pElAux = LTAlunos.getPrimeiro();
 
-    while(pAuxEl != nullptr){
-        pAuxAluno = pAuxEl->getInfo();
-        std::cout << "O aluno " << pAuxAluno->getNome() << " está matriculado na disciplina " << nome << std::endl;
-        pAuxEl = pAuxEl->getProximo();
+    while(pElAux != nullptr){
+        pAlAux = pElAux->getInfo();
+        std::cout << "Aluno " << pAlAux->getNome() << " com RA " << pAlAux->getRA() << std::endl;
+        pElAux = pElAux->getProximo();
     }
 }
 
 void ListaAlunos::listaAlunosInv(){
-    Elemento<Aluno> *pAux = pElAlunoAtual;
-    while(pAux != nullptr){
-        std::cout << "O aluno " << pAux->getNome() << " está matriculado na disciplina " << nome << std::endl;
-        pAux = pAux->getAnterior();
+    Elemento<Aluno>* pElAux = nullptr;
+    Aluno* pAlAux = nullptr;
+    pElAux = LTAlunos.getAtual();
+
+    while(pElAux != nullptr){
+        pAlAux = pElAux->getInfo();
+        std::cout << "Aluno " << pAlAux->getNome() << " com RA " << pAlAux->getRA() << std::endl;
+        pElAux = pElAux->getAnterior();
     }
 }
-
-void ListaAlunos::limpaLista(){
-    Elemento<Aluno> *pAux;
-    pAux = pElAlunoPrim;
-    
-    while(pElAlunoPrim != nullptr){
-        pElAlunoPrim = pElAlunoPrim->getProximo();
-        delete pAux;
-        pAux = pElAlunoPrim;
-    }
-
-    pElAlunoAtual = nullptr;
-    pElAlunoPrim = nullptr;
-}
-
 
 void ListaAlunos::gravarAlunos(){
     std::ofstream GravadorAlunos("alunos.dat", std::ios::out);
@@ -116,7 +60,7 @@ void ListaAlunos::gravarAlunos(){
 
     Elemento<Aluno> *pAuxElAluno = nullptr;
     Aluno* pAuxAluno = nullptr;
-    pAuxElAluno = pElAlunoPrim;
+    pAuxElAluno = LTAlunos.getPrimeiro();
 
     while(pAuxElAluno != nullptr){
         pAuxAluno = pAuxElAluno->getInfo();

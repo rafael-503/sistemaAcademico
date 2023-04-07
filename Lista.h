@@ -11,10 +11,13 @@ class Lista{
      public:
         Lista();
         ~Lista();
+
         void inicializa();
+        void limpar();
+
         bool incluiElemento(Elemento<TIPO>* pElemento);
         bool incluiInfo(TIPO* pInfo, const char* nome="");
-        void listaInfos();
+
         TIPO* localizar(char *n);
         Elemento<TIPO>* getPrimeiro();	
 	    Elemento<TIPO>* getAtual();
@@ -27,12 +30,27 @@ Lista<TIPO>::Lista(){
 
 template <class TIPO>
 Lista<TIPO>::~Lista(){
+    limpar();
 }
 
 template <class TIPO>
 void Lista<TIPO>::inicializa(){
     pPrimeiro = NULL;
     pAtual = NULL;
+}
+
+template <class TIPO>
+void Lista<TIPO>::limpar(){
+    Elemento<TIPO> *pAux = nullptr;
+    pAux = pPrimeiro;
+
+    while(pAux != nullptr){
+        pPrimeiro = pPrimeiro->getProximo();
+        delete pAux;
+        pAux = pPrimeiro;
+    }
+    pPrimeiro = nullptr;
+    pAtual = nullptr;
 }
 
 template <class TIPO>
@@ -58,9 +76,8 @@ bool Lista<TIPO>::incluiElemento(Elemento<TIPO> *pElemento){
 template <class TIPO>
 bool Lista<TIPO>::incluiInfo(TIPO* pInfo, const char* nome){
     if(pInfo != nullptr){
-        Elemento<TIPO> *pElemento;
+        Elemento<TIPO> *pElemento = nullptr;
         pElemento = new Elemento<TIPO>();
-        pElemento->setNome(nome);
         pElemento->setInfo(pInfo);
         incluiElemento(pElemento);
         return true;
@@ -68,19 +85,6 @@ bool Lista<TIPO>::incluiInfo(TIPO* pInfo, const char* nome){
     else{
         std::cout << "Erro elemento nulo na lista" << std::endl;
         return false;
-    }
-}
-
-template <class TIPO>
-void Lista<TIPO>::listaInfos(){
-    Elemento<TIPO> *pAux;
-    pAux = pPrimeiro;
-
-    if(pPrimeiro != nullptr){
-        while(pAux != nullptr){
-            std::cout << "Elemento na lista "<< pAux->getNome() << std::endl;
-            pAux = pAux->getProximo();
-        }
     }
 }
 
