@@ -1,10 +1,10 @@
 #include "ListaAlunos.h"
+#include "Aluno.h"
 #include <cstring>
 #include <iostream>
 #include <fstream>
 
-ListaAlunos::ListaAlunos(){
-}
+ListaAlunos::ListaAlunos(){}
 
 ListaAlunos::~ListaAlunos(){
     limpaLista();
@@ -16,9 +16,9 @@ void ListaAlunos::limpaLista(){
 
 void ListaAlunos::incluiAluno(Aluno* pa){
     if(pa != nullptr)
-        LTAlunos.incluiInfo(pa);
+        LTAlunos.incluiInfo(pa, pa->getNome());
     else
-        std::cout << "Erro: Aluno nao incluido" << std::endl;
+        std::cout << "Erro: Aluno nao incluido, ponteiro aluno nulo." << std::endl;
 }
 
 void ListaAlunos::excluiAluno(Aluno* pa) {
@@ -67,7 +67,8 @@ void ListaAlunos::gravarAlunos(){
 
         GravadorAlunos << pAuxAluno->getID() << ' '
                         << pAuxAluno->getRA() << ' '
-                        << pAuxAluno->getNome() << std::endl;
+                        << pAuxAluno->getNome() 
+                        << std::endl;
         pAuxElAluno = pAuxElAluno->getProximo();
     }
     GravadorAlunos.close();

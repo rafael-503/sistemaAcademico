@@ -5,87 +5,58 @@
 ListaDepartamentos::ListaDepartamentos(int nd, const char* n){
     numero_dep = nd;
     cont_dep = 0;
-    pElDepartamentoPrim = nullptr;
-    pElDepartamentoAtual = nullptr;
     strcpy(nome, n);
 }
 
-ListaDepartamentos::~ListaDepartamentos(){
-    ElDepartamento* pAux;
-    pAux = pElDepartamentoPrim;
-    
-    while(pElDepartamentoPrim != nullptr){
-        pElDepartamentoPrim = pElDepartamentoPrim->pProx;
-        delete pAux;
-        pAux = pElDepartamentoPrim;
-    }
-    
-    pElDepartamentoAtual = nullptr;
-    pElDepartamentoPrim = nullptr;
-}
+ListaDepartamentos::~ListaDepartamentos(){}
 
 void ListaDepartamentos::setNome(const char* n){
     std::strcpy(nome, n);
 }
 
-void ListaDepartamentos::setDepartamento(Departamento* pd){
-    if((cont_dep < numero_dep) && (pd != nullptr)){
-        ElDepartamento* pAux = nullptr;
-        pAux = new ElDepartamento();
-        pAux->setDepartamento(pd);
-
-        if(pElDepartamentoPrim == nullptr){
-            pElDepartamentoPrim = pAux;
-            pElDepartamentoAtual = pAux;
-        }
-        else{
-            pElDepartamentoAtual->pProx = pAux;
-            pAux->pAnt = pElDepartamentoAtual;
-            pElDepartamentoAtual = pAux;
-        }
-        cont_dep++;
-    }
-    else{
-        std::cout << "Erro: numero de departamentos excedido ou ponteiro nulo" << std::endl;
-    }
-}
-
 void ListaDepartamentos::incluiDepartamento(Departamento* pd){
-    if((cont_dep < numero_dep) && (pd !=nullptr)){
-        ElDepartamento* pAux = nullptr;
-        pAux = new ElDepartamento();
-        pAux->setDepartamento(pd);
-        pAux->pProx = nullptr;
-        pAux->pAnt = nullptr;
-
-        if(pElDepartamentoPrim == nullptr){
-            pElDepartamentoPrim = pAux;
-            pElDepartamentoAtual = pAux;
-        }
-        else{
-            pElDepartamentoAtual->pProx = pAux;
-            pAux->pAnt = pElDepartamentoAtual;
-            pElDepartamentoAtual = pAux;
-        }
-        cont_dep++;
-    }
+    if((cont_dep < numero_dep) && (pd != nullptr))
+        LTDepartamento.incluiInfo(pd, pd->getNome());
     else{
-        std::cout << "Erro: numero de departamentos excedido ou ponteiro nulo" << std::endl;
+        if(pd == nullptr)
+            std::cout << "Erro: ponteiro departamento nulo" << std::endl;
+        else
+            std::cout << "Erro: departamento não incluido, quantidadade de departamentos lotada" << std::endl;
     }
 }
 
 void ListaDepartamentos::listaDepartamentos(){
-    ElDepartamento* pAux = pElDepartamentoPrim;
-    while(pAux != nullptr){
-        std::cout << "Departamento: " << pAux->getDepartamento()->getNome() << std::endl;
-        pAux = pAux->pProx;
+    Elemento<Departamento>* pElAux = nullptr;
+    Departamento* pDeAux = nullptr;
+    pElAux = LTDepartamento.getPrimeiro();
+
+    while(pElAux != nullptr){
+        pDeAux = pElAux->getInfo();
+        std::cout << "Departamento " << pDeAux->getNome() << " da universidade "<< nome <<std::endl;
+        pElAux = pElAux->getProximo();
     }
 }
 
 void ListaDepartamentos::listaDepartamentosInv(){
-    ElDepartamento* pAux = pElDepartamentoAtual;
-    while(pAux != nullptr){
-        std::cout << "Departamento: " << pAux->getDepartamento()->getNome() << std::endl;
-        pAux = pAux->pAnt;
+    Elemento<Departamento>* pElAux = nullptr;
+    Departamento* pDeAux = nullptr;
+    pElAux = LTDepartamento.getAtual();
+
+    while(pElAux != nullptr){
+        pDeAux = pElAux->getInfo();
+        std::cout << "Departamento " << pDeAux->getNome() << " da universidade "<< nome <<std::endl;
+        pElAux = pElAux->getAnterior();
     }
+}
+
+Departamento* ListaDepartamentos::localizar(const char* n){
+    Elemento<Departamento>* pAux = nullptr;
+    pAux = LTDepartamento.getPrimeiro();
+
+    while (pAux != nullptr){
+        if(strcmp(pAux->getInfo()->getNome(), n) == 0)
+            return pAux->getInfo();
+        pAux = pAux->getProximo();
+    }
+    return nullptr;
 }

@@ -15,7 +15,7 @@ class Universidade{
         void setNome(const char* n);
         char* getNome();
 
-        void setDepartamento(Departamento* pdep);
+        void incluiDepartamento(Departamento* pdep);
         void listaDepartamentos();
         void listaDepartamentosInv();
 };

@@ -1,15 +1,15 @@
 #pragma once
 #include "Elemento.h"
-#include "Disciplina.h"
+#include "Lista.h"
 
+class Disciplina;
 class ListaDisciplinas{
     private:
         int cont_disc;
         int numero_disc;
         char nome[100];
 
-        Elemento<Disciplina>* pElDisciplinaPrim;
-        Elemento<Disciplina>* pElDisciplinaAtual;
+        Lista<Disciplina> LTDisciplinas;
 
     public:
         ListaDisciplinas(int nd=1000, const char* n="");

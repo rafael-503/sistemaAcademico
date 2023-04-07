@@ -10,7 +10,8 @@ Principal::Principal():
  contIdAluno(0), contIdDepart(0), contIdDisc(0),
  Computacao1(contIdDisc++), Computacao2(contIdDisc++), Algoritmos(contIdDisc++), TecProg(contIdDisc++),
  AAA(contIdAluno++), BBB(contIdAluno++), CCC(contIdAluno++), DDD(contIdAluno++),
- DAINF(contIdDepart++), FisicaPrinceton(contIdDepart++), MatematicaCambdrige(contIdDepart++){
+ DAINF(contIdDepart++), FisicaPrinceton(contIdDepart++), MatematicaCambdrige(contIdDepart++),
+ LUniversidades(1000, "Sistema Universidades"){
     // leitura da data atual
     time_t now = time(nullptr);
     tm *local = localtime(&now);
@@ -24,22 +25,41 @@ Principal::Principal():
 Principal::~Principal(){}
 
 void Principal::inicializa(){
-    inicializaUniversidades();
-    inicializaDepartamentos();
-    inicializaProfessores();
-    inicializaDisciplinas();
     inicializaAlunos();
+    inicializaDepartamentos();
+    inicializaDisciplinas();
+    inicializaEstagiarios();
+    inicializaProfessores();
+    inicializaUniversidades();
 }
 
-void Principal::inicializaUniversidades(){
-    UTFPR.setNome("UTFPR");
-    LUniversidades.incluiInfo(&UTFPR, UTFPR.getNome());
+void Principal::inicializaAlunos(){
+    Pessoa* ponteiroPessoa = nullptr;
+    Aluno* ponteiroAluno = nullptr;
 
-    Princeton.setNome("Princeton University");
-    LUniversidades.incluiInfo(&Princeton, Princeton.getNome());
+    AAA.setNome("AA");
+    LAlunos.incluiAluno(&AAA);
+    ponteiroAluno = &AAA;
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
+    LPessoas.incluiPessoa(ponteiroPessoa);
 
-    Cambdrige.setNome("Cambdrige University");
-    LUniversidades.incluiInfo(&Cambdrige, Cambdrige.getNome());
+    BBB.setNome("BB");
+    LAlunos.incluiAluno(&BBB);
+    ponteiroAluno = &BBB;
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
+    LPessoas.incluiPessoa(ponteiroPessoa);
+
+    CCC.setNome("CC");
+    LAlunos.incluiAluno(&CCC);
+    ponteiroAluno = &CCC;
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
+    LPessoas.incluiPessoa(ponteiroPessoa);
+
+    DDD.setNome("DD");
+    LAlunos.incluiAluno(&DDD);
+    ponteiroAluno = &DDD;
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
+    LPessoas.incluiPessoa(ponteiroPessoa);
 }
 
 void Principal::inicializaDepartamentos(){
@@ -47,13 +67,51 @@ void Principal::inicializaDepartamentos(){
     FisicaPrinceton.setNome("Fisica Princeton");
     MatematicaCambdrige.setNome("Matematica Cambdrige");
 
-    LDepartamentos.incluiInfo(&DAINF, DAINF.getNome());
-    LDepartamentos.incluiInfo(&FisicaPrinceton, FisicaPrinceton.getNome());
-    LDepartamentos.incluiInfo(&MatematicaCambdrige, MatematicaCambdrige.getNome());
+    LDepartamentos.incluiDepartamento(&DAINF);
+    LDepartamentos.incluiDepartamento(&FisicaPrinceton);
+    LDepartamentos.incluiDepartamento(&MatematicaCambdrige);
 
-    UTFPR.setDepartamento(&DAINF);
-    Princeton.setDepartamento(&FisicaPrinceton);
-    Cambdrige.setDepartamento(&MatematicaCambdrige);
+    UTFPR.incluiDepartamento(&DAINF);
+    Princeton.incluiDepartamento(&FisicaPrinceton);
+    Cambdrige.incluiDepartamento(&MatematicaCambdrige);
+}
+
+void Principal::inicializaDisciplinas(){
+    Algoritmos.setNome("Algoritmos");
+    Computacao1.setNome("Computacao 1");
+    Computacao2.setNome("Computacao 2");
+    TecProg.setNome("Tecnicas de Programacao");
+
+    LDisciplinas.incluiDisciplina(&Algoritmos);
+    LDisciplinas.incluiDisciplina(&Computacao1);
+    LDisciplinas.incluiDisciplina(&Computacao2);
+    LDisciplinas.incluiDisciplina(&TecProg);
+
+    Algoritmos.setDepartamento(&DAINF);
+    Computacao1.setDepartamento(&DAINF);
+    Computacao2.setDepartamento(&DAINF);
+    TecProg.setDepartamento(&DAINF);
+
+    Algoritmos.incluiAluno(&AAA);
+    Algoritmos.incluiAluno(&DDD);
+    TecProg.incluiAluno(&AAA);
+    TecProg.incluiAluno(&BBB);
+}
+
+void Principal::inicializaEstagiarios(){
+    Pessoa* ponteiroPessoa = nullptr;
+    Aluno* ponteiroAluno = nullptr;
+    Estagiario* ponteiroEstagiario = nullptr;
+
+    Fulano.setNome("Fulano");
+    Fulano.setBolsaEstagio(500);
+
+    ponteiroEstagiario = &Fulano;
+    ponteiroAluno = static_cast <Aluno*> (ponteiroEstagiario);
+    LAlunos.incluiAluno(ponteiroAluno);
+
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
+    LPessoas.incluiPessoa(ponteiroPessoa);
 }
 
 void Principal::inicializaProfessores(){
@@ -82,90 +140,29 @@ void Principal::inicializaProfessores(){
 
     ponteiroProfessor = &Einsten;
     ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+    LPessoas.incluiPessoa(ponteiroPessoa);
 
     ponteiroProfessor = &Newton;
     ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+    LPessoas.incluiPessoa(ponteiroPessoa);
 
     ponteiroProfessor = &Simao;
     ponteiroPessoa = static_cast<Pessoa*>(ponteiroProfessor);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
+    LPessoas.incluiPessoa(ponteiroPessoa);
 }
 
-void Principal::inicializaDisciplinas(){
-    Computacao1.setNome("Computacao 1");
-    LDisciplinas.incluiInfo(&Computacao1, Computacao1.getNome());
+void Principal::inicializaUniversidades(){
+    Cambdrige.setNome("Cambdrige University");
+    Princeton.setNome("Princeton University");
+    UTFPR.setNome("UTFPR");
 
-    Computacao2.setNome("Computacao 2");
-    LDisciplinas.incluiInfo(&Computacao2, Computacao2.getNome());
-
-    Algoritmos.setNome("Algoritmos");
-    LDisciplinas.incluiInfo(&Algoritmos, Algoritmos.getNome());
-
-    TecProg.setNome("Tecnicas de Programacao");
-    LDisciplinas.incluiInfo(&TecProg, TecProg.getNome());
-
-    Computacao1.setDepartamento(&DAINF);
-    Computacao2.setDepartamento(&DAINF);
-    Algoritmos.setDepartamento(&DAINF);
-    TecProg.setDepartamento(&DAINF);
-
-    TecProg.incluiAluno(&AAA);
-    TecProg.incluiAluno(&BBB);
-    Algoritmos.incluiAluno(&AAA);
-    Algoritmos.incluiAluno(&DDD);
-
-
-
-    //TecProg.excluiAluno(&BBB);
-    //TecProg.excluiAluno(&AAA);
+    LUniversidades.incluiUniversidade(&Cambdrige);
+    LUniversidades.incluiUniversidade(&Princeton);
+    LUniversidades.incluiUniversidade(&UTFPR);
 }
 
-void Principal::inicializaAlunos(){
-    Pessoa* ponteiroPessoa = nullptr;
-    Aluno* ponteiroAluno = nullptr;
-
-    AAA.setNome("AA");
-    LAlunos.incluiInfo(&AAA, AAA.getNome());
-    ponteiroAluno = &AAA;
-    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
-
-    BBB.setNome("BB");
-    LAlunos.incluiInfo(&BBB, BBB.getNome());
-    ponteiroAluno = &BBB;
-    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
-
-    CCC.setNome("CC");
-    LAlunos.incluiInfo(&CCC, CCC.getNome());
-    ponteiroAluno = &CCC;
-    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
-
-    DDD.setNome("DD");
-    LAlunos.incluiInfo(&DDD, DDD.getNome());
-    ponteiroAluno = &DDD;
-    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
-}
-
-void Principal::inicializaEstagiarios(){
-    Pessoa* ponteiroPessoa = nullptr;
-    Aluno* ponteiroAluno = nullptr;
-    Estagiario* ponteiroEstagiario = nullptr;
-
-    Fulano.setNome("Fulano");
-    Fulano.setBolsaEstagio(500);
-
-    ponteiroEstagiario = &Fulano;
-    ponteiroAluno = static_cast <Aluno*> (ponteiroEstagiario);
-    LAlunos.incluiInfo(ponteiroAluno, ponteiroAluno->getNome());
-
-    ponteiroPessoa = static_cast <Pessoa*> (ponteiroEstagiario);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
-
+void Principal::executar(){
+    menu();
 }
 
 void Principal::calcIdadeProf(){
@@ -186,12 +183,6 @@ void Principal::dptoOndeProfsTrabalham(){
     Simao.qualDepartamentoTrabalho();
 }
 
-void Principal::listaDiscDeptos(){
-    DAINF.listaDisciplinas();
-    FisicaPrinceton.listaDisciplinas();
-    MatematicaCambdrige.listaDisciplinas();
-}
-
 void Principal::listaAlunosDisc(){
     TecProg.listaAlunos();
     //TecProg.listaAlunosInv(); lista inversa
@@ -201,28 +192,38 @@ void Principal::listaAlunosDisc(){
 }
 
 void Principal::listaRendaPessoas(){
-    Elemento<Pessoa>* ponteiroElementoP = nullptr;
-    Pessoa* ponteiroPessoa = nullptr;
-
-    ponteiroElementoP = LPessoas.getPrimeiro();
-    while(ponteiroElementoP != nullptr){
-        ponteiroPessoa = ponteiroElementoP->getInfo();
-        ponteiroPessoa->informaRenda();
-        ponteiroElementoP = ponteiroElementoP->getProximo();
-    }
+    LPessoas.listaRenda();
 }
 
-void Principal::executar(){
-    //calcIdadeProf();
-    //univOndeProfsTrabalham();
-    //dptoOndeProfsTrabalham();
-    //listaDiscDeptos();
-    //listaAlunosDisc();
-    menu();
+
+void Principal::listaDiscDeptos(){
+    DAINF.listaDisciplinas();
+    FisicaPrinceton.listaDisciplinas();
+    MatematicaCambdrige.listaDisciplinas();
 }
 
 void Principal::cadDisciplina(){
-    
+    char nomeDepartamento[100];
+    char nomeDisciplina[100];
+
+    cout << "Qual o nome do departamentoda disciplina " << endl;
+    cin >> nomeDepartamento;
+
+    Departamento* pDepart = LDepartamentos.localizar(nomeDepartamento);
+    if(pDepart != nullptr){
+        cout << "Informe o nome da disciplina " << endl;
+        cin >> nomeDisciplina;
+
+        Disciplina* pDisc = new Disciplina(contIdDisc);
+        contIdDisc++;
+        pDisc->setNome(nomeDisciplina);
+        pDepart->incluiDisciplina(pDisc);
+        LDisciplinas.incluiDisciplina(pDisc);
+        cout << "Disciplina cadastrada com sucesso!" << endl;
+    }
+    else{
+        cout << "Departamento não encontrado!" << endl;
+    }
 }
 
 void Principal::cadDepartamento(){
@@ -233,17 +234,19 @@ void Principal::cadDepartamento(){
 
     cout << "Informe o nome da universidade: ";
     cin >> nomeUniversidade;
+
     pUniv = LUniversidades.localizar(nomeUniversidade);
 
     if (pUniv != nullptr){
         cout << "Informe o nome do departamento: ";
         cin >> nomeDepartamento;
 
-        pDepart = new Departamento();
+        pDepart = new Departamento(contIdDepart);
+        contIdDepart++;
         pDepart->setNome(nomeDepartamento);
         pDepart->setUniversidade(pUniv);
-        LDepartamentos.incluiInfo(pDepart);
-        pUniv->setDepartamento(pDepart);
+        LDepartamentos.incluiDepartamento(pDepart);
+        pUniv->incluiDepartamento(pDepart);
     }
     else{
         cout << "Universidade não encontrada!" << endl;
@@ -259,7 +262,7 @@ void Principal::cadUniversidade(){
 
     pUniv = new Universidade();
     pUniv->setNome(nomeUniversidade);
-    LUniversidades.incluiInfo(pUniv);
+    LUniversidades.incluiUniversidade(pUniv);
 
     cout << "Universidade cadastrada com sucesso!" << endl;
 }
@@ -270,7 +273,6 @@ void Principal::cadAluno(){
     Aluno* ponteiroAluno = nullptr;
     Pessoa* ponteiroPessoa = nullptr;
 
-
     cout << "Informe o nome do aluno: " << endl;
     cin >> nomeAluno;
 
@@ -278,14 +280,12 @@ void Principal::cadAluno(){
     cin >> ra;
 
     ponteiroAluno = new Aluno(contIdAluno++);
-
     ponteiroAluno->setNome(nomeAluno);
     ponteiroAluno->setRA(ra);
 
-    LAlunos.incluiInfo(ponteiroAluno);
-    ponteiroPessoa = static_cast <Pessoa *> (ponteiroAluno);
-    LPessoas.incluiInfo(ponteiroPessoa, ponteiroPessoa->getNome());
-
+    LAlunos.incluiAluno(ponteiroAluno);
+    ponteiroPessoa = static_cast <Pessoa*> (ponteiroAluno);
+    LPessoas.incluiPessoa(ponteiroPessoa);
 
     cout << "Aluno cadastrado com sucesso!" << endl;
 }
@@ -296,7 +296,7 @@ void Principal::gravarDepartamentos(){}
 void Principal::gravarDisciplinas(){}
 
 void Principal::gravarAlunos(){
-    //LAlunos.gravarAlunos();
+    LAlunos.gravarAlunos();
 }
 
 void Principal::gravarProfessores(){}
@@ -306,12 +306,12 @@ void Principal::recuperarDepartamentos(){}
 void Principal::recuperarDisciplinas(){}
 
 void Principal::recuperarAlunos(){
-    //LAlunos.recuperarAlunos();
+    LAlunos.recuperarAlunos();
 }
 void Principal::recuperarProfessores(){}
 
 void Principal::menu(){
-    int op= -1;
+    int op = -1;
 
     while (op!= 5){
         system("clear");
@@ -394,25 +394,25 @@ void Principal::menuExe(){
         cin >> op;
 
         switch (op){
-        case 1:{LDisciplinas.listaInfos();
+        case 1:{LDisciplinas.listaDisciplinas();
                 getchar();
                 getchar();}
             break;
-        case 2:{LDepartamentos.listaInfos();
+        case 2:{LDepartamentos.listaDepartamentos();
                 getchar();
                 getchar();}
             break;
-        case 3:{LUniversidades.listaInfos();
+        case 3:{LUniversidades.listaUniversidades();
                 getchar();
                 getchar();}
             break;
-        case 4:{LAlunos.listaInfos();
+        case 4:{LAlunos.listaAlunos();
                 getchar();
                 getchar();}
-        case 5:{LPessoas.listaInfos();
+        case 5:{dptoOndeProfsTrabalham();
                 getchar();
                 getchar();}
-        case 6:{LPessoas.listaInfos();
+        case 6:{LPessoas.listaPessoas();
                 getchar();
                 getchar();}
         case 7:{listaRendaPessoas();

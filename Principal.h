@@ -1,21 +1,23 @@
 #pragma once
-#include "Lista.h"
 #include "Professor.h"
 #include "Universidade.h"
 #include "Departamento.h"
 #include "Disciplina.h"
 #include "Aluno.h"
 #include "Estagiario.h"
+#include "ListaUniversidades.h"
+#include "ListaDisciplinas.h"
+#include "ListaPessoas.h"
 
 class Principal{
     private:
-        int contIdDisc;
-        int contIdDepart;
         int contIdAluno;
+        int contIdDepart;
+        int contIdDisc;
 
-        Universidade UTFPR;
-        Universidade Princeton;
         Universidade Cambdrige;
+        Universidade Princeton;
+        Universidade UTFPR;
 
         Departamento DAINF;
         Departamento FisicaPrinceton;
@@ -25,9 +27,9 @@ class Principal{
         Professor Newton;
         Professor Simao;
 
+        Disciplina Algoritmos;
         Disciplina Computacao1;
         Disciplina Computacao2;
-        Disciplina Algoritmos;
         Disciplina TecProg;
 
         Aluno AAA;
@@ -37,11 +39,11 @@ class Principal{
 
         Estagiario Fulano;
         
-        Lista<Universidade> LUniversidades;
-        Lista<Departamento> LDepartamentos;
-        Lista<Disciplina> LDisciplinas;
-        Lista<Aluno> LAlunos;
-        Lista<Pessoa> LPessoas;
+        ListaUniversidades LUniversidades;
+        ListaDepartamentos LDepartamentos;
+        ListaDisciplinas LDisciplinas;
+        ListaAlunos LAlunos;
+        ListaPessoas LPessoas;
 
         int diaAtual;
         int mesAtual;
@@ -52,21 +54,23 @@ class Principal{
         ~Principal();
 
         void inicializa();
-        void inicializaUniversidades();
-        void inicializaDepartamentos();
-        void inicializaProfessores();
-        void inicializaDisciplinas();
         void inicializaAlunos();
+        void inicializaDepartamentos();
+        void inicializaDisciplinas();
         void inicializaEstagiarios();
+        void inicializaProfessores();
+        void inicializaUniversidades();
+
+        void executar();
 
         void calcIdadeProf();
         void univOndeProfsTrabalham();
         void dptoOndeProfsTrabalham();
-        void listaDiscDeptos();
-        void listaAlunosDisc();
-        void listaRendaPessoas();
-        void executar();
 
+        void listaAlunosDisc();
+        void listaDiscDeptos();
+        void listaRendaPessoas();
+        
         void cadDisciplina();
         void cadDepartamento();
         void cadUniversidade();

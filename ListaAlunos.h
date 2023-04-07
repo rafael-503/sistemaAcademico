@@ -1,8 +1,8 @@
 #pragma once
 #include "Lista.h"
 #include "Elemento.h"
-#include "Aluno.h"
 
+class Aluno;
 class ListaAlunos{
     private:
         Lista<Aluno> LTAlunos;
@@ -16,7 +16,7 @@ class ListaAlunos{
         void excluiAluno(Aluno* pa);
         void listaAlunos();
         void listaAlunosInv();
+
         void gravarAlunos();
         void recuperarAlunos();
-
 };

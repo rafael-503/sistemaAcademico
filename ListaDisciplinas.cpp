@@ -1,4 +1,5 @@
 #include "ListaDisciplinas.h"
+#include "Disciplina.h"
 #include <cstring>
 #include <iostream>
 
@@ -6,22 +7,10 @@ ListaDisciplinas::ListaDisciplinas(int nd, const char* n){
     numero_disc = nd;
     cont_disc = 0;
     strcpy(nome, n);
-    pElDisciplinaPrim = nullptr;
-    pElDisciplinaAtual = nullptr;
 }
 
 ListaDisciplinas::~ListaDisciplinas(){
-    ElDisciplina* pAux;
-    pAux = pElDisciplinaPrim;
-    
-    while(pElDisciplinaPrim != nullptr){
-        pElDisciplinaPrim = pElDisciplinaPrim->pProx;
-        delete pAux;
-        pAux = pElDisciplinaPrim;
-    }
-    
-    pElDisciplinaAtual = nullptr;
-    pElDisciplinaPrim = nullptr;
+    LTDisciplinas.limpar();
 }
 
 void ListaDisciplinas::setNome(const char* n){
@@ -34,39 +23,37 @@ char* ListaDisciplinas::getNome(){
 
 void ListaDisciplinas::incluiDisciplina(Disciplina* pd){
     if((cont_disc < numero_disc) && (pd != nullptr)){
-        ElDisciplina* pAux = nullptr;
-        pAux = new ElDisciplina();
-        pAux->setDisciplina(pd);
-
-        if(pElDisciplinaPrim == nullptr){
-            pElDisciplinaPrim = pAux;
-            pElDisciplinaAtual = pAux;
-        }
-        else{
-            pElDisciplinaAtual->pProx = pAux;
-            pAux->pAnt = pElDisciplinaAtual;
-            pElDisciplinaAtual = pAux;
-        }
+        LTDisciplinas.incluiInfo(pd, pd->getNome());
         cont_disc++;
     }
     else{
-        std::cout << "Erro: numero de disciplinas excedido ou ponteiro nulo" << std::endl;
+        if(pd == nullptr)
+            std::cout << "Erro: ponteiro disciplina nulo." << std::endl;
+        else
+            std::cout << "Erro: numero de disciplinas excedido" << std::endl;
     }
-
 }
 
 void ListaDisciplinas::listaDisciplinas(){
-    ElDisciplina* pAux = pElDisciplinaPrim;
-    while(pAux != nullptr){
-        std::cout << "Disciplina: " << pAux->getNome() << " do departamento: " << getNome() << std::endl;
-        pAux = pAux->pProx;
+    Elemento<Disciplina>* pElAux = nullptr;
+    Disciplina* pDiAux = nullptr;
+    pElAux = LTDisciplinas.getPrimeiro();
+
+    while(pElAux != nullptr){
+        pDiAux = pElAux->getInfo();
+        std::cout << "Disciplina " << pDiAux->getNome() << " do departamento " << pDiAux->getDepartamento()->getNome() << std::endl;
+        pElAux = pElAux->getProximo();
     }
 }
 
 void ListaDisciplinas::listaDisciplinasInv(){
-    ElDisciplina* pAux = pElDisciplinaAtual;
-    while(pAux != nullptr){
-        std::cout << "Disciplina: " << pAux->getNome() << " do departamento: " << nome << std::endl;
-        pAux = pAux->pAnt;
+    Elemento<Disciplina>* pElAux = nullptr;
+    Disciplina* pDiAux = nullptr;
+    pElAux = LTDisciplinas.getAtual();
+
+    while(pElAux != nullptr){
+        pDiAux = pElAux->getInfo();
+        std::cout << "Disciplina " << pDiAux->getNome() << " do departamento " << pDiAux->getDepartamento()->getNome() << std::endl;
+        pElAux = pElAux->getAnterior();
     }
 }

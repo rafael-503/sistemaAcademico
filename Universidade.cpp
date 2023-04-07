@@ -9,15 +9,15 @@ Universidade::~Universidade(){}
 
 void Universidade::setNome(const char* n){
     std::strcpy(nome, n);
+    objDepartamentos.setNome(n);
 }
 
 char* Universidade::getNome(){
     return nome;
 }
 
-
-void Universidade::setDepartamento(Departamento* pdep){
-    objDepartamentos.setDepartamento(pdep);
+void Universidade::incluiDepartamento(Departamento* pdep){
+    objDepartamentos.incluiDepartamento(pdep);
 }
 
 void Universidade::listaDepartamentos(){
